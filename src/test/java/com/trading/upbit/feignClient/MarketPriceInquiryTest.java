@@ -20,7 +20,7 @@ class MarketPriceInquiryTest {
     @Test
     final void retrieve_ticker_test() {
         ResponseEntity<String> upbitReturn = marketPriceInquiry.getStockTickerPrice(markets);
-//        System.out.println(upbitReturn);
+        System.out.println(upbitReturn);
         assertThat(upbitReturn).isNotNull();
     }
 }

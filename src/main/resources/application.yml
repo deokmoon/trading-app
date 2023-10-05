@@ -1,3 +1,10 @@
+# url
 upbit:
   api:
     uri: 'https://api.upbit.com/v1'
+
+# schedule property
+schedule:
+  fixed:
+    delay:
+      upbit: 3000

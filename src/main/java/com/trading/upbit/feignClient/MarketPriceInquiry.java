@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
         , url = "${upbit.api.uri}"
 )
 public interface MarketPriceInquiry {
+
     @GetMapping("/accounts")
     ResponseEntity<String> getMyData();
 
