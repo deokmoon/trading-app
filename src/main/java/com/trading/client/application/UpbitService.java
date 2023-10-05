@@ -1,14 +1,14 @@
-package com.qoddi.trading.client.application;
+package com.trading.client.application;
 
-import com.qoddi.trading.upbit.dto.InquiryPriceOrderBookDto;
-import com.qoddi.trading.upbit.dto.InquiryPriceTickerDto;
-import com.qoddi.trading.upbit.feignClient.MarketPriceInquiry;
+import com.trading.upbit.dto.InquiryPriceOrderBookDto;
+import com.trading.upbit.dto.InquiryPriceTickerDto;
+import com.trading.upbit.feignClient.MarketPriceInquiry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.qoddi.trading.util.ConvertStringToDto.convertFromJson;
+import static com.trading.util.ConvertStringToDto.convertFromJson;
 
 @Service
 @RequiredArgsConstructor

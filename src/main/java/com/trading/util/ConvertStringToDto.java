@@ -1,4 +1,4 @@
-package com.qoddi.trading.util;
+package com.trading.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

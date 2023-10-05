@@ -1,4 +1,4 @@
-package com.qoddi.trading.upbit.dto;
+package com.trading.upbit.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

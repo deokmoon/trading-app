@@ -1,8 +1,8 @@
-package com.qoddi.trading.client.ui;
+package com.trading.client.ui;
 
-import com.qoddi.trading.client.application.UpbitService;
-import com.qoddi.trading.upbit.dto.InquiryPriceOrderBookDto;
-import com.qoddi.trading.upbit.dto.InquiryPriceTickerDto;
+import com.trading.client.application.UpbitService;
+import com.trading.upbit.dto.InquiryPriceOrderBookDto;
+import com.trading.upbit.dto.InquiryPriceTickerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
