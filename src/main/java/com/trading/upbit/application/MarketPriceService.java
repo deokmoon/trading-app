@@ -4,10 +4,12 @@ import com.trading.upbit.domain.MarketBaseInformationRepository;
 import com.trading.upbit.dto.InquiryAllMarketInformationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @RequiredArgsConstructor
+@Transactional
 @Service
 public class MarketPriceService {
 
