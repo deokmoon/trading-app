@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
-# 엔진엑스와 연결되어 있지 않은 스프링 부트를 종료하는 스크립트
+# 서비스 종료하는 스크립트
 
 ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)
-source ${ABSDIR}/profile.sh
 
-IDLE_PORT=$(find_idle_port)
+echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
-echo "> $IDLE_PORT 에서 구동 중인 애플리케이션 pid 확인"
-
-IDLE_PID=$(lsof -ti tcp:${IDLE_PORT})
+IDLE_PID=$(pgrep -fl trading-app | grep java | awk '{print $1}')
 
 if [ -z ${IDLE_PID} ]
 then
