@@ -10,9 +10,9 @@ PROJECT_NAME=trading-app
 
 echo "> Build 파일 복사"
 
-echo "> cp $REPOSITORY/$PROJECT_NAME/zip/*.jar $REPOSITORY/PROJECT_NAME/"
+echo "> cp $REPOSITORY/$PROJECT_NAME/zip/*.jar $REPOSITORY/$PROJECT_NAME/"
 
-cp $REPOSITORY/PROJECT_NAME/zip/*.jar $REPOSITORY/PROJECT_NAME/
+cp $REPOSITORY/$PROJECT_NAME/zip/*.jar $REPOSITORY/$PROJECT_NAME/
 
 
 echo "> 새 애플리케이션 배포"
