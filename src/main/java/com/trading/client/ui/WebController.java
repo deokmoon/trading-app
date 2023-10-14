@@ -2,9 +2,8 @@ package com.trading.client.ui;
 
 import com.trading.client.application.UpbitService;
 import com.trading.client.dto.InquiryAllMarketInformationResponseDto;
-import com.trading.upbit.dto.InquiryAllMarketInformationDto;
-import com.trading.upbit.dto.InquiryPriceOrderBookDto;
-import com.trading.upbit.dto.InquiryPriceTickerDto;
+import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
+import com.trading.upbit.ticker.dto.InquiryPriceTickerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

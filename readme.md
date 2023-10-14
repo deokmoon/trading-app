@@ -23,7 +23,6 @@ $ java -jar build/libs/trading-app-0.0.1-SNAPSHOT.jar
 - [OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)
   - Client(주문시스템)에서 서버로 요청하는 부분을 구현하기 위해 적용하였습니다.
 
-
 ## Upbit
 - [업비트 api 문서](https://docs.upbit.com/docs/user-request-guide)
 

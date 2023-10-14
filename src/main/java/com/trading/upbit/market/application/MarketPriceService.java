@@ -1,7 +1,7 @@
-package com.trading.upbit.application;
+package com.trading.upbit.market.application;
 
-import com.trading.upbit.domain.MarketBaseInformationRepository;
-import com.trading.upbit.dto.InquiryAllMarketInformationDto;
+import com.trading.upbit.market.domain.MarketBaseInformationRepository;
+import com.trading.upbit.market.dto.InquiryAllMarketInformationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

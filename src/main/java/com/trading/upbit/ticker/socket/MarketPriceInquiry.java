@@ -1,4 +1,4 @@
-package com.trading.upbit.feignClient;
+package com.trading.upbit.ticker.socket;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;

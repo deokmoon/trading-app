@@ -1,10 +1,10 @@
 package com.trading.client.application;
 
 import com.trading.client.dto.InquiryAllMarketInformationResponseDto;
-import com.trading.upbit.domain.MarketBaseInformationRepository;
-import com.trading.upbit.dto.InquiryPriceOrderBookDto;
-import com.trading.upbit.dto.InquiryPriceTickerDto;
-import com.trading.upbit.feignClient.MarketPriceInquiry;
+import com.trading.upbit.market.domain.MarketBaseInformationRepository;
+import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
+import com.trading.upbit.ticker.dto.InquiryPriceTickerDto;
+import com.trading.upbit.ticker.socket.MarketPriceInquiry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
