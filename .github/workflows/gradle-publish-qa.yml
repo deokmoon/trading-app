@@ -14,10 +14,10 @@ env:
   CODE_DEPLOY_GROUP_NAME: trading-app-lightsail-group
 
 on:
-  release:
-    types: [push]
-  push:
-    branches: [qa]
+#  release:
+#    types: [push]
+#  push:
+#    branches: [qa]
   workflow_dispatch:
 
 jobs:
