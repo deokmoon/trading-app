@@ -1,11 +1,19 @@
+import java.text.SimpleDateFormat;
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.1.3'
 	id 'io.spring.dependency-management' version '1.1.3'
 }
 
+static def getDate() {
+	def df = new SimpleDateFormat("yyyyMMdd-HHmmss")
+	df.setTimeZone(TimeZone.getTimeZone("UTC"))
+	return df.format(new Date())
+}
+
 group = 'com.trading'
-version = '0.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+version = '0.0.1-SNAPSHOT-'+ getDate()
 
 java {
 	sourceCompatibility = '17'
