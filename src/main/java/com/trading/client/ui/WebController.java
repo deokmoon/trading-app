@@ -18,23 +18,27 @@ public class WebController {
 
     private final UpbitService upbitService;
 
+    // index
     @GetMapping("/")
     public String index() {
         return "hello-001";
     }
 
+    // 종목코드 조회
     @GetMapping("/market-list")
     public ResponseEntity<List<InquiryAllMarketInformationResponseDto>> getMarketInformationList() {
         return ResponseEntity.ok(upbitService.getMarketInformationList());
     }
 
-    // todo ui response dto refactoring
+    // TODO ui response dto refactoring
+    // 현재가 조회
     @GetMapping("/ticker/{markets}")
     public ResponseEntity<List<InquiryPriceTickerDto>> getUpbitTickerPrice(@PathVariable() String markets) {
         return ResponseEntity.ok(upbitService.getUpbitTickerPrice(markets));
     }
 
-    // todo ui response dto refactoring
+    // TODO ui response dto refactoring
+    // 호가 조회
     @GetMapping("/order-book/{markets}")
     public ResponseEntity<List<InquiryPriceOrderBookDto>> getOrderBookPrice(@PathVariable() String markets) {
         return ResponseEntity.ok(upbitService.getOrderBookPrice(markets));
