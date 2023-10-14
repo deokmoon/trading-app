@@ -2,7 +2,6 @@ package com.trading.client.ui;
 
 import com.trading.client.application.UpbitService;
 import com.trading.client.dto.InquiryAllMarketInformationResponseDto;
-import com.trading.upbit.dto.InquiryAllMarketInformationDto;
 import com.trading.upbit.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.dto.InquiryPriceTickerDto;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +17,11 @@ import java.util.List;
 public class WebController {
 
     private final UpbitService upbitService;
+
+    @GetMapping("/")
+    public String index() {
+        return "hello-001";
+    }
 
     @GetMapping("/market-list")
     public ResponseEntity<List<InquiryAllMarketInformationResponseDto>> getMarketInformationList() {
