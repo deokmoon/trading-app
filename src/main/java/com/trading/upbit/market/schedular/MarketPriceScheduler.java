@@ -24,6 +24,6 @@ public class MarketPriceScheduler {
     public void retrieveAndSaveTicker() {
         // 전체 종목 조회
         List<InquiryAllMarketInformationDto> marketInfoDtoList = convertFromJson(marketCodeInquiry.getAllMarketInformation().getBody(), InquiryAllMarketInformationDto.class);
-        marketPriceService.saveMarketInfoList(marketInfoDtoList);
+        marketPriceService.createMarketInfoJsonFile(marketInfoDtoList);
     }
 }

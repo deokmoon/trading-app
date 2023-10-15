@@ -1,4 +1,4 @@
-package com.trading.client.dto;
+package com.trading.client.upbit.dto;
 
 import com.trading.upbit.market.domain.MarketBaseInformation;
 import lombok.AccessLevel;

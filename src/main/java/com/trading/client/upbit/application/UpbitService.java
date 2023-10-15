@@ -1,7 +1,5 @@
-package com.trading.client.application;
+package com.trading.client.upbit.application;
 
-import com.trading.client.dto.InquiryAllMarketInformationResponseDto;
-import com.trading.upbit.market.domain.MarketBaseInformationRepository;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.ticker.dto.InquiryPriceTickerDto;
 import com.trading.upbit.ticker.socket.MarketPriceInquiry;
@@ -17,7 +15,6 @@ import static com.trading.util.ConvertStringToDto.convertFromJson;
 public class UpbitService {
     // todo remove 필요
     private final MarketPriceInquiry marketPriceInquiry;
-    private final MarketBaseInformationRepository marketBaseInformationRepository;
 
     public List<InquiryPriceTickerDto> getUpbitTickerPrice(String markets) {
         return convertFromJson(marketPriceInquiry.getStockTickerPrice(markets).getBody(), InquiryPriceTickerDto.class);
@@ -27,7 +24,4 @@ public class UpbitService {
         return convertFromJson(marketPriceInquiry.getStockOrderBook(markets).getBody(), InquiryPriceOrderBookDto.class);
     }
 
-    public List<InquiryAllMarketInformationResponseDto> getMarketInformationList() {
-        return InquiryAllMarketInformationResponseDto.from(marketBaseInformationRepository.findAll());
-    }
 }
