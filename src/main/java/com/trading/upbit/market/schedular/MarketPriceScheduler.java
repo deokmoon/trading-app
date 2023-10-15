@@ -1,9 +1,9 @@
-package com.trading.upbit.schedular;
+package com.trading.upbit.market.schedular;
 
-import com.trading.upbit.application.MarketPriceService;
-import com.trading.upbit.dto.InquiryAllMarketInformationDto;
-import com.trading.upbit.feignClient.MarketCodeInquiry;
-import com.trading.upbit.feignClient.MarketPriceInquiry;
+import com.trading.upbit.market.application.MarketPriceService;
+import com.trading.upbit.market.dto.InquiryAllMarketInformationDto;
+import com.trading.upbit.market.feign.MarketCodeInquiry;
+import com.trading.upbit.ticker.socket.MarketPriceInquiry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -24,6 +24,6 @@ public class MarketPriceScheduler {
     public void retrieveAndSaveTicker() {
         // 전체 종목 조회
         List<InquiryAllMarketInformationDto> marketInfoDtoList = convertFromJson(marketCodeInquiry.getAllMarketInformation().getBody(), InquiryAllMarketInformationDto.class);
-        marketPriceService.saveMarketInfoList(marketInfoDtoList);
+        marketPriceService.createMarketInfoJsonFile(marketInfoDtoList);
     }
 }

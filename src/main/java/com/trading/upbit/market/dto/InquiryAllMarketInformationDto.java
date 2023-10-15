@@ -1,8 +1,7 @@
-package com.trading.upbit.dto;
+package com.trading.upbit.market.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.trading.upbit.domain.MarketBaseInformation;
-import lombok.Data;
+import com.trading.upbit.market.domain.MarketBaseInformation;
 import lombok.Getter;
 
 @Getter
