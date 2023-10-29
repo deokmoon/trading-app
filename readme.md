@@ -50,9 +50,14 @@ Request URI:
 ~~~
 
 ### Todo
+- [ ] 파람이 아니라 쿼리 파라미터 활용
+- [ ] Upbit용 Socket 통신 Bean을 등록
+- [ ] 구동 시 해당 Bean을 호출하도록 수행 -> 해당 Bean은 소켓 통신으로 시세 업데이트를 함
+  - [ ] 소켓으로 받은 ticker의 code를 파싱하여 Concurrent 에 종목별 시세 적용  
+- [ ] BUILDER 디자인 패턴 적용
+- [ ] MapStruct 적용
 - [ ] MySQL read / write 구분
 - [ ] @Scheduled 를 통해 write and sync
   - [ ] 전체종목 조회는 app 구동 시 최초 요청 혹은 러프한 시간으로 조회 후 공유
   - [ ] 종목을 조회하고 저장할 때 병렬 thread 처리
 - [ ] 외부 요청은 read db를 통해 return
-- [ ] BUILDER 디자인 패턴 적용

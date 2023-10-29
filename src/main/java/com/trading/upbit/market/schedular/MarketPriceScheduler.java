@@ -3,7 +3,7 @@ package com.trading.upbit.market.schedular;
 import com.trading.upbit.market.application.MarketPriceService;
 import com.trading.upbit.market.dto.InquiryAllMarketInformationDto;
 import com.trading.upbit.market.feign.MarketCodeInquiry;
-import com.trading.upbit.ticker.socket.MarketPriceInquiry;
+import com.trading.upbit.ticker.adapter.MarketPriceInquiry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

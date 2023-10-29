@@ -2,7 +2,7 @@ package com.trading.client.upbit.application;
 
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.ticker.dto.InquiryPriceTickerDto;
-import com.trading.upbit.ticker.socket.MarketPriceInquiry;
+import com.trading.upbit.ticker.adapter.MarketPriceInquiry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
