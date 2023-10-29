@@ -1,19 +1,22 @@
 package com.trading.upbit.ticker.adapter;
 
 import com.trading.config.WebsocketClientEndpoint;
+import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import jakarta.websocket.DeploymentException;
-import jakarta.websocket.Session;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 @SpringBootTest
 class UpbitStompSessionHandlerTest {
 
+    @Autowired
+    private WebsocketClientEndpoint upbitWebSocketClient;
 
     @Test
     final void wss_test() throws ExecutionException, InterruptedException {
@@ -28,18 +31,23 @@ class UpbitStompSessionHandlerTest {
     final void java_socket_test() throws URISyntaxException, DeploymentException, IOException {
         final String serverAddress = "wss://api.upbit.com/websocket/v1";
         // Send your request message
-        String requestMessage = "[" +
-                "{\"ticket\":\"test example\"}," +
-                "{\"type\":\"ticker\",\"codes\":[\"KRW-BTC\", \"KRW-ETH\"], \"is_only_realtime\": \"true\"}," +
-                "{\"format\":\"DEFAULT\"}" +
-                "]";
-
+        UpbitTickerRequestDto requestDto = UpbitTickerRequestDto.builder()
+                .ticket("test example")
+                .type("ticker")
+                .codes(Arrays.asList("KRW-BTC", "KRW-ETH"))
+                .format("DEFAULT")
+                .isOnlyRealtime(true)
+                .build();
+        String requestMessage = requestDto.toString();
+        System.out.println("request: " + requestMessage);
+//        "[" +
+//                "{\"ticket\":\"test example\"}," +
+//                "{\"type\":\"ticker\",\"codes\":[\"KRW-BTC\", \"KRW-ETH\"], \"is_only_realtime\": \"true\"}," +
+//                "{\"format\":\"DEFAULT\"}" +
+//                "]";
         try {
             // open websocket
-            final WebsocketClientEndpoint clientEndPoint = new WebsocketClientEndpoint();
-            Session session = clientEndPoint.connect(new URI(serverAddress));
-
-            clientEndPoint.sendMessage(requestMessage);
+            upbitWebSocketClient.sendMessage(requestMessage);
             // add listener
 //            WebsocketClientEndpoint.MessageHandler handler = message -> {
 //                System.out.println("handle message");
@@ -57,8 +65,6 @@ class UpbitStompSessionHandlerTest {
 
         } catch (InterruptedException ex) {
             System.err.println("InterruptedException exception: " + ex.getMessage());
-        } catch (URISyntaxException ex) {
-            System.err.println("URISyntaxException exception: " + ex.getMessage());
         }
     }
 

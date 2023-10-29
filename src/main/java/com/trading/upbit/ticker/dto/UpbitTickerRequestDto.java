@@ -13,6 +13,16 @@ import java.util.List;
 public class UpbitTickerRequestDto {
     private String ticket;
     private String type;
-    private List<UpbitCode> codes;
+    private List<String> codes;
     private String format;
+    private boolean isOnlyRealtime;
+
+    @Override
+    public String toString() {
+        return "[" +
+                "{\"ticket\":\"" + ticket + "\"}," +
+                "{\"type\":\"" + type + "\",\"codes\":" + codes + ",\"is_only_realtime\":\"" + isOnlyRealtime + "\"}," +
+                "{\"format\":\"" + format + "\"}" +
+                "]";
+    }
 }
