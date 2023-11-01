@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.trading.util.ConvertStringToDto.convertFromJson;
+import static com.trading.util.ConvertStringToDto.convertListDtoFromJson;
 
 @Service
 @RequiredArgsConstructor
@@ -17,11 +17,11 @@ public class UpbitService {
     private final MarketPriceInquiry marketPriceInquiry;
 
     public List<InquiryPriceTickerDto> getUpbitTickerPrice(String markets) {
-        return convertFromJson(marketPriceInquiry.getStockTickerPrice(markets).getBody(), InquiryPriceTickerDto.class);
+        return convertListDtoFromJson(marketPriceInquiry.getStockTickerPrice(markets).getBody(), InquiryPriceTickerDto.class);
     }
 
     public List<InquiryPriceOrderBookDto> getOrderBookPrice(String markets) {
-        return convertFromJson(marketPriceInquiry.getStockOrderBook(markets).getBody(), InquiryPriceOrderBookDto.class);
+        return convertListDtoFromJson(marketPriceInquiry.getStockOrderBook(markets).getBody(), InquiryPriceOrderBookDto.class);
     }
 
 }
