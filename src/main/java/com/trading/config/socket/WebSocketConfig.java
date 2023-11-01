@@ -1,4 +1,4 @@
-package com.trading.config;
+package com.trading.config.socket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +11,8 @@ public class WebSocketConfig {
     private final String upbitURL = "wss://api.upbit.com/websocket/v1";
 
     @Bean
-    public WebsocketClientEndpoint upbitWebSocketClient() {
-        WebsocketClientEndpoint endpoint = new WebsocketClientEndpoint();
+    public UpbitWebSocketClientEndpoint upbitWebSocketClient() {
+        UpbitWebSocketClientEndpoint endpoint = new UpbitWebSocketClientEndpoint();
         URI upbitWebSocketURI = URI.create(upbitURL);
         endpoint.connect(upbitWebSocketURI);
         return endpoint;
