@@ -14,7 +14,7 @@ public class UpbitEventListener implements ApplicationListener<UpbitTicketEvent>
 
     @Override
     public void onApplicationEvent(UpbitTicketEvent event) {
-        System.out.println(event.getMessage());
+//        System.out.println(event.getMessage());
         UpbitTickerResponseDto upbitTickerResponseDto = ConvertStringToDto.convertDtoFromJson(event.getMessage(), UpbitTickerResponseDto.class);
         UpbitTickerMapper mapper = Mappers.getMapper(UpbitTickerMapper.class);
         UpbitTicker upbitTicker = mapper.map(upbitTickerResponseDto);
