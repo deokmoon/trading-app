@@ -1,6 +1,6 @@
 package com.trading.upbit.ticker.adapter;
 
-import com.trading.config.WebsocketClientEndpoint;
+import com.trading.config.socket.WebsocketClientEndpoint;
 import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import jakarta.websocket.DeploymentException;
 import org.junit.jupiter.api.Test;

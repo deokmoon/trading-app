@@ -2,13 +2,15 @@ package com.trading.client.upbit.ui;
 
 import com.trading.client.upbit.application.UpbitService;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
-import com.trading.upbit.ticker.dto.InquiryPriceTickerDto;
+import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
+import com.trading.util.TradingAppStringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -44,9 +46,9 @@ public class UpbitController {
     }
 
     // todo ui response dto refactoring
-    @GetMapping("/ticker/{markets}")
-    public ResponseEntity<List<InquiryPriceTickerDto>> getUpbitTickerPrice(@PathVariable() String markets) {
-        return ResponseEntity.ok(upbitService.getUpbitTickerPrice(markets));
+    @GetMapping("/ticker")
+    public ResponseEntity<List<UpbitTickerResponseDto>> getUpbitTickerPrice(@RequestParam("markets") String markets) {
+        return ResponseEntity.ok(upbitService.getUpbitTickerPrice(TradingAppStringUtils.splitAndTrim(markets)));
     }
 
     // todo ui response dto refactoring

@@ -1,4 +1,4 @@
-package com.trading.config;
+package com.trading.config.socket;
 
 import jakarta.websocket.ClientEndpoint;
 import jakarta.websocket.CloseReason;
@@ -8,6 +8,7 @@ import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.WebSocketContainer;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.json.ParseException;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 
+@Slf4j
 @ClientEndpoint
 public class WebsocketClientEndpoint {
     Session userSession = null;
@@ -26,9 +28,7 @@ public class WebsocketClientEndpoint {
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             userSession = container.connectToServer(this, endpointURI);
-
             return userSession;
-
         } catch (Exception e) {
             // todo
             throw new RuntimeException(e);
@@ -37,13 +37,13 @@ public class WebsocketClientEndpoint {
 
     @OnOpen
     public void onOpen(Session userSession) {
-        System.out.println("opening websocket");
+//        System.out.println("open websocket");
         this.userSession = userSession;
     }
 
     @OnClose
     public void onClose(Session userSession, CloseReason reason) {
-        System.out.println("closing websocket");
+//        System.out.println("closing websocket");
         this.userSession = null;
     }
 
@@ -56,11 +56,8 @@ public class WebsocketClientEndpoint {
 
     @OnMessage
     public void onMessage(ByteBuffer bytes) throws UnsupportedEncodingException {
-        byte[] byteArray = bytes.array();
-        int length = bytes.remaining();
-        String response = new String(byteArray, bytes.position(), length, "UTF-8");
-        System.out.println("Handle byte buffer");
-        System.out.println(response);
+//        System.out.println("Handle byte buffer");
+//        System.out.println(response);
     }
 
     public void addMessageHandler(MessageHandler msgHandler) {
