@@ -1,9 +1,9 @@
 package com.trading.upbit.ticker.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class UpbitTickerResponseDto {
     @JsonProperty("type")
     private String type;
@@ -12,46 +12,46 @@ public class UpbitTickerResponseDto {
     private String code;
 
     @JsonProperty("opening_price")
-    private double openingPrice;
+    private String openingPrice;
 
     @JsonProperty("high_price")
-    private double highPrice;
+    private String highPrice;
 
     @JsonProperty("low_price")
-    private double lowPrice;
+    private String lowPrice;
 
     @JsonProperty("trade_price")
-    private double tradePrice;
+    private String tradePrice;
 
     @JsonProperty("prev_closing_price")
-    private double prevClosingPrice;
+    private String prevClosingPrice;
 
     @JsonProperty("acc_trade_price")
-    private double accTradePrice;
+    private String accTradePrice;
 
     @JsonProperty("change")
     private String change;
 
     @JsonProperty("change_price")
-    private double changePrice;
+    private String changePrice;
 
     @JsonProperty("signed_change_price")
-    private double signedChangePrice;
+    private String signedChangePrice;
 
     @JsonProperty("change_rate")
-    private double changeRate;
+    private String changeRate;
 
     @JsonProperty("signed_change_rate")
-    private double signedChangeRate;
+    private String signedChangeRate;
 
     @JsonProperty("ask_bid")
     private String askBid;
 
     @JsonProperty("trade_volume")
-    private double tradeVolume;
+    private String tradeVolume;
 
     @JsonProperty("acc_trade_volume")
-    private double accTradeVolume;
+    private String accTradeVolume;
 
     @JsonProperty("trade_date")
     private String tradeDate;
@@ -63,19 +63,19 @@ public class UpbitTickerResponseDto {
     private long tradeTimestamp;
 
     @JsonProperty("acc_ask_volume")
-    private double accAskVolume;
+    private String accAskVolume;
 
     @JsonProperty("acc_bid_volume")
-    private double accBidVolume;
+    private String accBidVolume;
 
     @JsonProperty("highest_52_week_price")
-    private double highest52WeekPrice;
+    private String highest52WeekPrice;
 
     @JsonProperty("highest_52_week_date")
     private String highest52WeekDate;
 
     @JsonProperty("lowest_52_week_price")
-    private double lowest52WeekPrice;
+    private String lowest52WeekPrice;
 
     @JsonProperty("lowest_52_week_date")
     private String lowest52WeekDate;
@@ -96,10 +96,10 @@ public class UpbitTickerResponseDto {
     private long timestamp;
 
     @JsonProperty("acc_trade_price_24h")
-    private double accTradePrice24h;
+    private String accTradePrice24h;
 
     @JsonProperty("acc_trade_volume_24h")
-    private double accTradeVolume24h;
+    private String accTradeVolume24h;
 
     @JsonProperty("stream_type")
     private String streamType;

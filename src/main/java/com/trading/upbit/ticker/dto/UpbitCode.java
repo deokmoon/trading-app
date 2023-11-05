@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+// todo delete
 @Builder
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

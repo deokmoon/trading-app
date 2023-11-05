@@ -4,8 +4,10 @@ import com.trading.upbit.ticker.domain.UpbitTicker;
 import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
 import org.mapstruct.Mapper;
 
-@Mapper
-public interface UpbitTickerMapper {
-    UpbitTicker map(UpbitTickerResponseDto tickerResponseDto);
+import java.util.List;
 
+@Mapper
+public interface UpbitTickerResponseDtoMapper {
+
+    List<UpbitTickerResponseDto> map(List<UpbitTicker> upbitTicker);
 }
