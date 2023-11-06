@@ -33,7 +33,7 @@ $ java -jar build/libs/trading-app-0.0.1-SNAPSHOT.jar
 - 
 
 ### LOCAL TEST
-~~~ json
+~~~ http request
 # 전체종목 조회
 Request method:	GET
 Request URI: http://localhost:8080/market-list
