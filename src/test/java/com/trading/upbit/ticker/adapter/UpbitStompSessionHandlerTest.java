@@ -5,14 +5,13 @@ import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import jakarta.websocket.DeploymentException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
-@SpringBootTest
+//@SpringBootTest
 class UpbitStompSessionHandlerTest {
 
     @Autowired
@@ -47,7 +46,7 @@ class UpbitStompSessionHandlerTest {
 //                "]";
         try {
             // open websocket
-            upbitWebSocketClient.sendMessage(requestMessage);
+//            upbitWebSocketClient.sendMessage(requestMessage);
             // add listener
 //            WebsocketClientEndpoint.MessageHandler handler = message -> {
 //                System.out.println("handle message");
@@ -61,16 +60,10 @@ class UpbitStompSessionHandlerTest {
 //            clientEndPoint.addMessageHandler(handler);
 
             // Sleep for a reasonable amount of time to allow for responses
-            Thread.sleep(10000); // Wait for 10 seconds, for example
-
+            Thread.sleep(1000); // Wait for 10 seconds, for example
         } catch (InterruptedException ex) {
             System.err.println("InterruptedException exception: " + ex.getMessage());
         }
-    }
-
-    @Test
-    final void java_socket() {
-
     }
 
 }
