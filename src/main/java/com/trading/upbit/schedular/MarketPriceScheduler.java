@@ -20,7 +20,7 @@ public class MarketPriceScheduler {
     private final MarketCodeInquiry marketCodeInquiry;
     private final MarketPriceInquiry marketPriceInquiry;
 
-    @Scheduled(fixedDelayString = "${schedule.fixed.delay.upbit}")
+//    @Scheduled(fixedDelayString = "${schedule.fixed.delay.upbit}")
     public void retrieveAndSaveTicker() {
         // 전체 종목 조회
         List<InquiryAllMarketInformationDto> marketInfoDtoList = convertFromJson(marketCodeInquiry.getAllMarketInformation().getBody(), InquiryAllMarketInformationDto.class);
