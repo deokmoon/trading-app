@@ -21,7 +21,7 @@ public class WebController {
     // index
     @GetMapping("/")
     public String index() {
-        return "hello-001";
+        return "This is trading-app root";
     }
 
     // 종목코드 조회
