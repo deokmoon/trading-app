@@ -13,7 +13,7 @@ static def getDate() {
 }
 
 group = 'com.trading'
-version = '0.0.1-SNAPSHOT-'+ getDate()
+version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
