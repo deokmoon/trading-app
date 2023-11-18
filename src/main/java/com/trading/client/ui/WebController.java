@@ -2,11 +2,14 @@ package com.trading.client.ui;
 
 import com.trading.client.application.UpbitService;
 import com.trading.client.dto.InquiryAllMarketInformationResponseDto;
+import com.trading.client.dto.requests.CandlesMinutesReq;
+import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.upbit.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.dto.InquiryPriceTickerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,5 +45,10 @@ public class WebController {
     @GetMapping("/order-book/{markets}")
     public ResponseEntity<List<InquiryPriceOrderBookDto>> getOrderBookPrice(@PathVariable() String markets) {
         return ResponseEntity.ok(upbitService.getOrderBookPrice(markets));
+    }
+
+    @GetMapping("/candles/minutes/{unit}")
+    public CandlesMinutesRes getCandlesMinutes(@ModelAttribute CandlesMinutesReq req) {
+        return upbitService.getCandlesMinutes(req);
     }
 }
