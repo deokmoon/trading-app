@@ -2,11 +2,11 @@ package com.trading.upbit.dto.response;
 
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
 public class UpbitCandlesMinutesRes {
-
     /*
      {
        "market": "KRW-BTC",
@@ -28,19 +28,19 @@ public class UpbitCandlesMinutesRes {
 
     private LocalDateTime candle_date_time_kst;
 
-    private Double opening_price;
+    private BigDecimal opening_price;
 
-    private Double high_price;
+    private BigDecimal high_price;
 
-    private Double low_price;
+    private BigDecimal low_price;
 
-    private Double trade_price;
+    private BigDecimal trade_price;
 
     private Long timestamp;
 
-    private Double candle_acc_trade_price;
+    private BigDecimal candle_acc_trade_price;
 
-    private Double candle_acc_trade_volume;
+    private BigDecimal candle_acc_trade_volume;
 
     private Integer unit;
 
