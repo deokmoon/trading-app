@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 public class CandlesMinutesReq {
 
+    // TODO unit 의 타입을 CandlesUnitType 으로 변경이 필요함. 현재 파싱오류
     private String unit;
 
     private String market;

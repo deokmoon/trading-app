@@ -29,7 +29,7 @@ public class UpbitService {
 
     private final MarketBaseInformationRepository marketBaseInformationRepository;
 
-    private static final String DATE_FORMATTER = "yyyy-MM-dd'T'HH:mm:ss";
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public List<InquiryPriceTickerDto> getUpbitTickerPrice(String markets) {
         return convertFromJson(marketPriceInquiry.getStockTickerPrice(markets).getBody(), InquiryPriceTickerDto.class);
@@ -47,12 +47,7 @@ public class UpbitService {
      * 분(Minute) 캔들
      */
     public CandlesMinutesRes getCandlesMinutes(CandlesMinutesReq req) {
-        String to = "";
-        if (Objects.isNull(req.getTo()) == false) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-            to = req.getTo().format(formatter);
-        }
-        List<UpbitCandlesMinutesRes> upbitCandlesMinutesRes = candlesInquiry.getCandlesMinutes(req.getUnit(), req.getMarket(), to, req.getCount());
+        List<UpbitCandlesMinutesRes> upbitCandlesMinutesRes = candlesInquiry.getCandlesMinutes(String.valueOf(req.getUnit()), req.getMarket(), req.getTo().format(formatter), req.getCount());
         return CandlesMinutesRes.from(upbitCandlesMinutesRes);
     }
 
