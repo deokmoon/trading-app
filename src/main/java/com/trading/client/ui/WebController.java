@@ -48,7 +48,7 @@ public class WebController {
     }
 
     @GetMapping("/candles/minutes/{unit}")
-    public CandlesMinutesRes getCandlesMinutes(@ModelAttribute CandlesMinutesReq req) {
-        return upbitService.getCandlesMinutes(req);
+    public CandlesMinutesRes getCandlesMinutes(@PathVariable String unit, @ModelAttribute CandlesMinutesReq req) {
+        return upbitService.getCandlesMinutes(unit, req);
     }
 }

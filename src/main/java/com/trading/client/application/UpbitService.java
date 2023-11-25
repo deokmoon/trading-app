@@ -46,8 +46,8 @@ public class UpbitService {
     /**
      * 분(Minute) 캔들
      */
-    public CandlesMinutesRes getCandlesMinutes(CandlesMinutesReq req) {
-        List<UpbitCandlesMinutesRes> upbitCandlesMinutesRes = candlesInquiry.getCandlesMinutes(String.valueOf(req.getUnit()), req.getMarket(), req.getTo().format(formatter), req.getCount());
+    public CandlesMinutesRes getCandlesMinutes(String unit, CandlesMinutesReq req) {
+        List<UpbitCandlesMinutesRes> upbitCandlesMinutesRes = candlesInquiry.getCandlesMinutes(unit, req.getMarket(), req.getTo().format(formatter), req.getCount());
         return CandlesMinutesRes.from(upbitCandlesMinutesRes);
     }
 
