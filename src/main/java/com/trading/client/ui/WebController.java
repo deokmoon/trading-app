@@ -1,6 +1,6 @@
 package com.trading.client.upbit.ui;
 
-import com.trading.client.upbit.application.UpbitService;
+import com.trading.client.application.UpbitService;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
 import com.trading.util.TradingAppStringUtils;
@@ -25,7 +25,7 @@ import static com.trading.constant.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_N
 
 @RequiredArgsConstructor
 @RestController
-public class UpbitController {
+public class WebController {
 
     private final UpbitService upbitService;
 
