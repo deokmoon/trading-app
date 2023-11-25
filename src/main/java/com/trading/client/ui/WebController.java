@@ -1,6 +1,8 @@
-package com.trading.client.upbit.ui;
+package com.trading.client.ui;
 
-import com.trading.client.upbit.application.UpbitService;
+import com.trading.client.application.UpbitService;
+import com.trading.client.dto.requests.CandlesMinutesReq;
+import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
 import com.trading.util.TradingAppStringUtils;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,10 +28,17 @@ import static com.trading.constant.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_N
 
 @RequiredArgsConstructor
 @RestController
-public class UpbitController {
+public class WebController {
 
     private final UpbitService upbitService;
 
+    // index
+    @GetMapping("/")
+    public String index() {
+        return "hello-001";
+    }
+
+    // 종목코드 조회
     @GetMapping("/market-list")
     public ResponseEntity<byte[]> getMarketInformationList() throws IOException {
         String filePath = JSON_RESPONSE_DIRECTORY + UPBIT_MARKET_MASTER_FILE_NAME + JSON_FORMAT;
@@ -55,5 +65,10 @@ public class UpbitController {
     @GetMapping("/order-book/{markets}")
     public ResponseEntity<List<InquiryPriceOrderBookDto>> getOrderBookPrice(@PathVariable() String markets) {
         return ResponseEntity.ok(upbitService.getOrderBookPrice(markets));
+    }
+
+    @GetMapping("/candles/minutes/{unit}")
+    public CandlesMinutesRes getCandlesMinutes(@ModelAttribute CandlesMinutesReq req) {
+        return upbitService.getCandlesMinutes(req);
     }
 }
