@@ -1,5 +1,6 @@
 package com.trading.upbit.feignClient;
 
+import com.trading.upbit.ticker.adapter.MarketPriceInquiry;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
