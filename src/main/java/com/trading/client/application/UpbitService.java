@@ -1,5 +1,15 @@
 package com.trading.client.application;
 
+import com.trading.client.dto.requests.CandlesMinutesReq;
+import com.trading.client.dto.response.CandlesMinutesRes;
+import com.trading.remote.upbit.dto.response.UpbitCandlesMinutesRes;
+import com.trading.remote.upbit.feignClient.CandlesInquiry;
+import com.trading.remote.upbit.ticker.adapter.MarketPriceInquiry;
+import com.trading.remote.upbit.ticker.domain.UpbitTicker;
+import com.trading.remote.upbit.ticker.domain.UpbitTickerStorage;
+import com.trading.remote.upbit.ticker.dto.InquiryPriceOrderBookDto;
+import com.trading.remote.upbit.ticker.dto.UpbitTickerResponseDto;
+import com.trading.remote.upbit.ticker.dto.mapper.UpbitTickerResponseDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
