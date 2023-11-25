@@ -1,4 +1,4 @@
-package com.trading.config;
+package com.trading.config.feign;
 
 import feign.Logger;
 import feign.Retryer;
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-@EnableFeignClients("com.trading.upbit.feignClient")
-public class FeignConfig {
+@EnableFeignClients("com.trading.upbit")
+public class FeignUbpitConfig {
 
     /**
      * NONE: 로깅하지 않음(기본값)

@@ -1,4 +1,4 @@
-package com.trading.upbit.domain;
+package com.trading.upbit.market.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
