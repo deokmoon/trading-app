@@ -1,6 +1,6 @@
 package com.trading.client.dto.response;
 
-import com.trading.remote.upbit.dto.response.UpbitCandlesMinutesRes;
+import com.trading.upbit.dto.response.UpbitCandlesMinutesRes;
 import lombok.Builder;
 import lombok.Getter;
 

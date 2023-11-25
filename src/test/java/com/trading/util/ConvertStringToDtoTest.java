@@ -1,6 +1,6 @@
 package com.trading.util;
 
-import com.trading.remote.upbit.ticker.dto.UpbitTickerResponseDto;
+import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static com.trading.util.ConvertStringToDto.convertDtoFromJson;
