@@ -1,6 +1,6 @@
 package com.trading.config.socket;
 
-import com.trading.upbit.ticker.event.UpbitTickerEventPublisher;
+import com.trading.remote.upbit.ticker.event.UpbitTickerEventPublisher;
 import jakarta.websocket.ClientEndpoint;
 import jakarta.websocket.OnMessage;
 import org.springframework.beans.factory.annotation.Autowired;
