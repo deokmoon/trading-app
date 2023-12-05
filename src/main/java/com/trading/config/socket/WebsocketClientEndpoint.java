@@ -1,6 +1,5 @@
 package com.trading.config.socket;
 
-import jakarta.websocket.ClientEndpoint;
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.ContainerProvider;
 import jakarta.websocket.OnClose;
@@ -17,7 +16,7 @@ import java.net.URI;
 import java.nio.ByteBuffer;
 
 @Slf4j
-@ClientEndpoint
+//@ClientEndpoint
 public class WebsocketClientEndpoint {
     Session userSession = null;
     private MessageHandler messageHandler;

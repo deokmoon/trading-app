@@ -1,6 +1,6 @@
 package com.trading.upbit.ticker.schedular;
 
-import com.trading.config.socket.UpbitWebSocketClientEndpoint;
+import com.trading.config.socket.httpclient.WebsocketClientEndpoint2;
 import com.trading.upbit.market.domain.MarketBaseStorage;
 import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @DependsOn("marketScheduler")
 public class TickerScheduler {
-    private final UpbitWebSocketClientEndpoint upbitWebSocketClient;
+//    private final UpbitWebSocketClientEndpoint upbitWebSocketClient;
+    private final WebsocketClientEndpoint2 websocketClientEndpoint2;
 
     @Scheduled(fixedDelayString = "${schedule.fixed.delay.upbit}")
     public void connectSocketAndTickerHandler() {
@@ -24,6 +25,6 @@ public class TickerScheduler {
                 .isOnlyRealtime(true)
                 .build();
         String requestMessage = requestDto.toString();
-        upbitWebSocketClient.sendMessage(requestMessage);
+        websocketClientEndpoint2.connect();
     }
 }
