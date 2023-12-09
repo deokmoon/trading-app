@@ -25,12 +25,48 @@ $ java -jar build/libs/trading-app-0.0.1-SNAPSHOT.jar
 ## Upbit
 - [업비트 api 문서](https://docs.upbit.com/docs/user-request-guide)
 
-## Naver Search API
-= [네이버 뉴스 검색 API 문서](https://developers.naver.com/docs/serviceapi/search/news/news.md)
+## 뉴스 검색 api
+- [네이버 뉴스 검색 API 문서](https://developers.naver.com/docs/serviceapi/search/news/news.md)
+### Naver 뉴스 검색 요청 응답
+- URL: http://localhost:8080/blogs
+- Method: GET
+- Parameter
+- 예) http://localhost:8080/news?query=bitcoin&start=2&display=2&sort=RECENCY
 
-### 현재 구현 내용
-- Upbit Socket 연결 후 ConcurrentHashMap 에 저장
-- 
+| Parameter | Type    | Description                | Required | Default  |
+|-----------|---------|----------------------------|----------|----------|
+| query     | String  | 검색어                        | Y        | -        |
+| display   | Integer | 검색 결과 수 (1 - 50)           | N        | 10       |
+| start     | Integer | 페이지 (1 - 50)               | N        | 1        |
+| sort      | String  | 정렬 순서 (ACCURACY / RECENCY) | N        | accuracy |
+
+- 응답
+~~~http request
+{
+    "news": [
+        {
+            "title": "MMSS 토큰, 글로벌 거래소 '비트마트' 상장",
+            "contents": "BRC-20(<b>Bitcoin</b> Request for Comment)은 오디널스 프로토콜(Ordinals Protocol)을 활용해 데이터를 비트코인의 최소 단위인 사토시(Satoshi)에 기록하고, 비트코인 블록체인 기반의 토큰을 배포하고 전송할 수 있도록... ",
+            "platformLink": "https://www.tokenpost.kr/article-155485",
+            "originLink": "https://www.tokenpost.kr/article-155485",
+            "createTime": "2023-12-08T00:00:00"
+        },
+        {
+            "title": "[이번주 놓친 세계 코인 이슈] 美 공군 소령, 군사 이점 위한 비트코인 통합 ...",
+            "contents": "또, 브라질에서는 현지 최대 은행 기관의 비트코인(<b>Bitcoin</b>, BTC), 이더리움(Ethereum, ETH) 출범 소식이, 스위스... 비트코인(<b>Bitcoin</b>, BTC)과 테더(Tether, USDT)를 지역사회 세금 및 공과금 납부 수단으로 허용한다고 5일(현지 시각)... ",
+            "platformLink": "http://coinreaders.com/90545",
+            "originLink": "http://coinreaders.com/90545",
+            "createTime": "2023-12-08T00:00:00"
+        }
+    ],
+    "currentPage": 2,
+    "size": 2,
+    "total": 17815
+}
+
+~~~
+
+ 
 
 ### LOCAL TEST
 ~~~ http request
