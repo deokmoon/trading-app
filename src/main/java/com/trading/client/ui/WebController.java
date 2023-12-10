@@ -6,6 +6,7 @@ import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
 import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
 import com.trading.util.TradingAppStringUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -68,7 +69,7 @@ public class WebController {
     }
 
     @GetMapping("/candles/minutes/{unit}")
-    public CandlesMinutesRes getCandlesMinutes(@PathVariable String unit, @ModelAttribute CandlesMinutesReq req) {
+    public CandlesMinutesRes getCandlesMinutes(@PathVariable String unit, @Valid @ModelAttribute CandlesMinutesReq req) {
         return upbitService.getCandlesMinutes(unit, req);
     }
 }
