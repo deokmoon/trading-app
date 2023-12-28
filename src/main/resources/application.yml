@@ -12,3 +12,19 @@ schedule:
   fixed:
     delay:
       upbit: 86400000
+
+application:
+  name: news-search
+  version: 1.0.0
+  external-api:
+    kakao:
+      scheme: https
+      host: dapi.kakao.com
+      path: /v2/search/news
+      authorization: KakaoAK 5a60cf339c638fc06dc05cfe14d28804
+    naver:
+      scheme: https
+      host: openapi.naver.com
+      path: /v1/search/news.json
+      client-id: CrMVAi4gohyXhms5u4tq
+      client-secret: Ug04liJU6z

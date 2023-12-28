@@ -1,19 +1,31 @@
 package com.trading.client.ui;
 
 import com.trading.client.application.UpbitService;
-import org.junit.jupiter.api.Disabled;
+import com.trading.client.dto.response.CandlesMinutesRes;
+import com.trading.common.base.BaseMockMvcTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
+import java.util.Collections;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(WebController.class)
-class WebControllerTest {
+class WebControllerTest extends BaseMockMvcTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -21,27 +33,64 @@ class WebControllerTest {
     @MockBean
     private UpbitService upbitService;
 
-    @Test
-    @Disabled
-    void testUpdateContent() throws Exception {
-        //given
-//        given(contentService.updateContent(any(), any()))
-//                .willReturn(ContentDetailDTO.builder()
-//                        .name("user1")
-//                        .title("title2")
-//                        .content("content2")
-//                        .build());
-        //when & then
-        mockMvc.perform(get("/candles/minutes/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(
-                                "{ \"name\" : \"user1\", \"title\" : \"test2\", \"content\": \"content2\"}"
-                        ))
-                .andExpect(status().isOk());
+    @Nested
+    class candlesMinutesTest {
 
+        @Test
+        void 정상케이스() throws Exception {
+            // given
+            given(upbitService.getCandlesMinutes(any(), any()))
+                    .willReturn(CandlesMinutesRes.builder()
+                            .list(Collections.EMPTY_LIST)
+                            .build());
 
+            MultiValueMap<String, String> reqMap = new LinkedMultiValueMap<>();
+            reqMap.add("market", "KRW-BTC");
+            reqMap.add("to", "2023-11-02T14:00:00");
+            reqMap.add("count", "5");
+
+            // when & then
+            ResultActions resultActions = mockMvc.perform(get("/candles/minutes/1")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .characterEncoding("UTF-8")
+                    .params(reqMap)
+            );
+
+            resultActions.andExpect(status().isOk());
+            resultActions.andExpect(jsonPath("$.list.length()").value("0"));
+
+        }
+
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            ",", // null
+            "''", // empty
+            "' '" // blank
+    })
+    void market_을_누락하여_요청하면_BadRequest(String market) throws Exception {
+        // given
+        given(upbitService.getCandlesMinutes(any(), any()))
+                .willReturn(CandlesMinutesRes.builder()
+                        .list(Collections.EMPTY_LIST)
+                        .build());
+
+        MultiValueMap<String, String> reqMap = new LinkedMultiValueMap<>();
+        reqMap.add("market", market);
+        reqMap.add("to", "2023-11-02T14:00:00");
+        reqMap.add("count", "5");
+
+        // when & then
+        ResultActions resultActions = mockMvc.perform(get("/candles/minutes/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .params(reqMap)
+        );
+
+        resultActions.andExpect(status().isBadRequest());
     }
 
 }
