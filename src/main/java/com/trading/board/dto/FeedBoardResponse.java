@@ -61,4 +61,10 @@ public class FeedBoardResponse {
                 .build();
     }
 
+    public static List<FeedBoardResponse> fromList(List<FeedBoard> feedBoards) {
+        return feedBoards.stream()
+                .map(FeedBoardResponse::from)
+                .collect(Collectors.toList());
+    }
+
 }
