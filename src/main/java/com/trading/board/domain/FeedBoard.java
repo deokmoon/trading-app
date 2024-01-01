@@ -65,7 +65,7 @@ public class FeedBoard extends BaseTimeEntity{
 
     public static FeedBoard from(FeedBoardRequest request) throws IOException {
         return FeedBoard.builder()
-                .image(request.getImage().getBytes())
+                .image(request.getImage() == null ? new byte[]{} : request.getImage().getBytes())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .boardType(request.getBoardType())
