@@ -43,6 +43,7 @@ dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	runtimeOnly 'com.h2database:h2'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0' // query parameter
 	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
 
 	compileOnly 'org.projectlombok:lombok'

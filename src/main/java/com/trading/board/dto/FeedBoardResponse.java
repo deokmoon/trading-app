@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.data.domain.Page;
 
 import java.util.Base64;
 import java.util.Collections;
@@ -59,6 +60,12 @@ public class FeedBoardResponse {
                 .marketCode(feedBoard.getMarketCode())
                 .boardType(feedBoard.getBoardType())
                 .build();
+    }
+
+    public static List<FeedBoardResponse> fromList(Page<FeedBoard> feedBoards) {
+        return feedBoards.stream()
+                .map(FeedBoardResponse::from)
+                .collect(Collectors.toList());
     }
 
 }
