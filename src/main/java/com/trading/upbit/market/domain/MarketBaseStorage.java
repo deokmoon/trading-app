@@ -11,7 +11,7 @@ public class MarketBaseStorage {
     private static List<String> marketList = new ArrayList<>();
 
     public void save(MarketBaseInformation MarketBaseInformation) {
-        marketList.add(MarketBaseInformation.getMarket());
+        marketList.add(MarketBaseInformation.getMarketCode());
     }
 
     public static List<String> getMarketList() {
