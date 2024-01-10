@@ -1,5 +1,8 @@
 package com.trading.config.socket;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.json.ParseException;
+
 import jakarta.websocket.ClientEndpoint;
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.ContainerProvider;
@@ -8,9 +11,6 @@ import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.WebSocketContainer;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.json.ParseException;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;

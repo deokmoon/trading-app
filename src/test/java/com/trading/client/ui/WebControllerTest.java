@@ -20,6 +20,7 @@ import java.util.Collections;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -50,11 +51,13 @@ class WebControllerTest extends BaseMockMvcTest {
             reqMap.add("count", "5");
 
             // when & then
-            ResultActions resultActions = mockMvc.perform(get("/candles/minutes/1")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .accept(MediaType.APPLICATION_JSON)
-                    .characterEncoding("UTF-8")
-                    .params(reqMap)
+            ResultActions resultActions = mockMvc.perform(
+                    get("/candles/minutes/1")
+                            .with(user("user"))
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .accept(MediaType.APPLICATION_JSON)
+                            .characterEncoding("UTF-8")
+                            .params(reqMap)
             );
 
             resultActions.andExpect(status().isOk());
@@ -83,11 +86,13 @@ class WebControllerTest extends BaseMockMvcTest {
         reqMap.add("count", "5");
 
         // when & then
-        ResultActions resultActions = mockMvc.perform(get("/candles/minutes/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .characterEncoding("UTF-8")
-                .params(reqMap)
+        ResultActions resultActions = mockMvc.perform(
+                get("/candles/minutes/1")
+                        .with(user("user"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .params(reqMap)
         );
 
         resultActions.andExpect(status().isBadRequest());

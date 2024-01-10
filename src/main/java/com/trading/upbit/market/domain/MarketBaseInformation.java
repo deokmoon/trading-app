@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "crypto_base")
 public class MarketBaseInformation extends BaseTimeEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String marketCode;
     private String koreanName;
