@@ -122,6 +122,27 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    /**
+     * 이메일 인증하기
+     */
+    @Transactional
+    @Override
+    public EmailAuthRes emailAuth(String userId, String authKey) {
+        // 사용자정보 조회하기
+        User user = userService.getUserByUserIdAndAuthKey(userId, authKey);
+
+        if (Objects.isNull(user)) {
+            // 일치하는 사용자정보가 없으면 -> 401
+            throw new TradRuntimeException(AuthErrorCode.FAIL_EMAIL_AUTH);
+        }
+
+        // 일치하는 사용자정보가 있으면 -> 이메일인증여부에 Y
+        user.authenticateEmail();
+        return EmailAuthRes.from(user);
+    }
+
+
+
 
 
 
@@ -137,24 +158,7 @@ public class AuthServiceImpl implements AuthService {
         return new LogoutRes(isSuccess.toString());
     }
 
-    /**
-     * 이메일 인증하기
-     */
-    @Override
-    public EmailAuthRes emailAuth(String userId, String authKey) {
-        // 사용자정보 조회하기
-        User user = userService.getUserByUserIdAndAuthKey(userId, authKey);
 
-        if (Objects.isNull(user)) {
-            // 일치하는 사용자정보가 없으면 -> 401
-            throw new TradRuntimeException(AuthErrorCode.FAIL_EMAIL_AUTH);
-        }
-
-        // 일치하는 사용자정보가 있으면 -> 이메일인증여부에 Y
-        user.authenticateEmail();
-        User resultUser = userService.updateUser(user);
-        return EmailAuthRes.from(resultUser);
-    }
 
     /**
      * 비밀번호 초기화 이메일 발송하기

@@ -25,11 +25,11 @@ public interface AuthService {
 
     SignupRes signup(SignupReq signupReq);
 
+    EmailAuthRes emailAuth(String userId, String authKey);
+
     LoginRes login(LoginReq loginReq);
 
     LogoutRes logout(LogoutReq logoutReq);
-
-    EmailAuthRes emailAuth(String userId, String authKey);
 
     void findPassword(FindPasswordReq req);
 

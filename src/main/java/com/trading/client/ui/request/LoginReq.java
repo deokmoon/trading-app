@@ -2,7 +2,6 @@ package com.trading.client.ui.request;
 
 import com.trading.common.annotation.Description;
 import com.trading.common.constants.YesNo;
-import com.trading.domain.user.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,10 +24,4 @@ public class LoginReq {
     @Description("자동로그인 여부")
     private YesNo autoLogin;
 
-    public UserDto toUserDto() {
-        return UserDto.builder()
-                .email(email)
-                .pw(password)
-                .build();
-    }
 }
