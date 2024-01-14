@@ -1,6 +1,5 @@
 package com.trading.upbit.ticker.adapter;
 
-import com.trading.common.base.DefaultTestProfile;
 import com.trading.config.socket.WebsocketClientEndpoint;
 import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import jakarta.websocket.DeploymentException;
@@ -14,7 +13,7 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 @SpringBootTest
-class UpbitStompSessionHandlerTest implements DefaultTestProfile {
+class UpbitStompSessionHandlerTest {
 
     @Autowired
     private WebsocketClientEndpoint upbitWebSocketClient;

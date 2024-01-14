@@ -1,0 +1,74 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    datasource:
+      url: jdbc:h2:mem:test
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+  mail:
+    service: gmail
+    host: smtp.gmail.com
+    port: 587
+    username: username
+    password: password
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 3000
+          starttls:
+            enable: true
+  data:
+    redis:
+      host: host
+      port: 1234
+      password:
+      database: 1234
+# url
+upbit:
+  api:
+    uri: 'https://api.upbit.com/v1'
+
+# schedule property
+schedule:
+  fixed:
+    delay:
+      upbit: 86400000
+
+application:
+  name: news-search
+  version: 1.0.0
+  external-api:
+    kakao:
+      scheme: https
+      host: dapi.kakao.com
+      path: /v2/search/news
+      authorization: authorization
+    naver:
+      scheme: https
+      host: openapi.naver.com
+      path: /v1/search/news.json
+      client-id: client-id
+      client-secret: client-secret
+
+jwt:
+  secret-key: secret-key
+
+app-key: app-key
+
+developer-email: developer-email
+
+email-send: false
+
+# OpenWeather
+openweather:
+  appid: openweather-appid
+
+# google
+google:
+  client-id: google-client-id
+
+host: host

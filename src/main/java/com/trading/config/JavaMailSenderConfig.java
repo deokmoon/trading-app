@@ -9,6 +9,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
+// TODO Configuration 과 Bean 분리
 @RequiredArgsConstructor
 @Configuration
 public class JavaMailSenderConfig {
