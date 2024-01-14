@@ -17,6 +17,9 @@ import com.trading.client.ui.response.InitDateRes;
 import com.trading.client.ui.response.LoginRes;
 import com.trading.client.ui.response.LogoutRes;
 import com.trading.client.ui.response.SignupRes;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
@@ -40,11 +38,14 @@ public class AuthController {
     @Value("${spring.mail.username}")
     private String emailUser;
 
+    @Value("${myprofile}")
+    private String myprofile;
+
     private final AuthService authService;
 
     @GetMapping("/index")
     public String getAuth() {
-        return "Auth!";
+        return "Auth!" + myprofile;
     }
 
     /**
