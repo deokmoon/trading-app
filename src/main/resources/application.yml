@@ -1,36 +1,44 @@
 spring:
-#  profiles:
-#    include: oauth
   jpa:
     show_sql: true
+    hibernate:
+      ddl-auto: none
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
-    jpa:
-      hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-          format_sql: true
-          show-sql: true
-      open-in-view: false
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER}
+  mail:
+    service: ${SPRING_MAIL_SERVICE}
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 3000
+          starttls:
+            enable: true
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST}
+      port: ${SPRING_DATA_REDIS_PORT}
+      password: ${SPRING_DATA_REDIS_PASSWORD}
+      database: ${SPRING_DATA_REDIS_DATABASE}
 
 # url
 upbit:
   api:
-    uri: 'https://api.upbit.com/v1'
+    uri: ${UPBIT_API_URI}
 
 # schedule property
 schedule:
   fixed:
     delay:
-      upbit: 86400000
+      upbit: ${SCHEDULE_FIXED_DELAY_UPBIT}
 
 application:
   name: news-search
@@ -38,12 +46,31 @@ application:
   external-api:
     kakao:
       scheme: https
-      host: dapi.kakao.com
-      path: /v2/search/news
-      authorization: KakaoAK 5a60cf339c638fc06dc05cfe14d28804
+      host: ${APPLICATION_EXTERNAL_API_KAKAO_HOST}
+      path: ${APPLICATION_EXTERNAL_API_KAKAO_PATH}
+      authorization: ${APPLICATION_EXTERNAL_API_KAKAO_AUTH}
     naver:
       scheme: https
-      host: openapi.naver.com
-      path: /v1/search/news.json
-      client-id: CrMVAi4gohyXhms5u4tq
-      client-secret: Ug04liJU6z
+      host: ${APPLICATION_EXTERNAL_API_NAVER_HOST}
+      path: ${APPLICATION_EXTERNAL_API_NAVER_PATH}
+      client-id: ${APPLICATION_EXTERNAL_API_NAVER_CLIENT_ID}
+      client-secret: ${APPLICATION_EXTERNAL_API_NAVER_CLIENT_SECRET}
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+
+app-key: ${APP_KEY}
+
+developer-email: ${DEVELOPER_EMAIL}
+
+email-send: true
+
+# OpenWeather
+openweather:
+  appid: ${OPENWEATHER_APIID}
+
+# google
+google:
+  client-id: ${GOOGLE_CLIENT_ID}
+
+host: ${HOST}

@@ -4,10 +4,13 @@ import com.trading.client.application.auth.utils.JwtUtils;
 import com.trading.common.errorcode.JwtAuthenticationFilterErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.domain.user.User;
-import com.trading.domain.user.dto.UserDto;
 import com.trading.domain.user.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +19,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -42,11 +41,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.info("JwtAuthenticationFilter:doFilterInternal");
         String uri = request.getRequestURI();
         // TODO AppkeyFilter 의 doFilterInter 과 패턴체크가 일부 중복 "/(auth|weather|news|corona|docs)" 로?
-        Pattern pattern = Pattern.compile("/(auth/(index|login|initdata|appkey|email|password|check-dupl-email|signup|google/verify)|weather|news|corona|docs)");
+        Pattern pattern = Pattern.compile("/(auth/(index|login|initdata|appkey|email|password|check-dupl-email|signup|logout|google/verify)|weather|news|corona|docs)");
 //        Pattern pattern = Pattern.compile("/auth/login");
         Matcher mat = pattern.matcher(uri);
         if (mat.find()) {
-            // 패턴에 일치하면 appKey 체크없이 통과
+            // 패턴에 일치하면 access_token 체크없이 통과
             filterChain.doFilter(request, response);
             return;
         }
@@ -55,7 +54,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if ("GET" .equals(request.getMethod()) && uri.indexOf("/app-version") > -1) {
             // 요청 URL 이 GET /app-version 이면 -> ATK 체크 예외
             filterChain.doFilter(request, response);
-            return;
         }
         if (ObjectUtils.isEmpty(authorization)) {
             // access_token 이 없으면 401

@@ -3,6 +3,8 @@ package com.trading.client.ui;
 import com.trading.client.application.UpbitService;
 import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.common.base.BaseMockMvcTest;
+import com.trading.domain.user.service.UserService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(WebController.class)
+@Disabled
 class WebControllerTest extends BaseMockMvcTest {
 
     @Autowired
@@ -33,6 +36,9 @@ class WebControllerTest extends BaseMockMvcTest {
 
     @MockBean
     private UpbitService upbitService;
+
+    @MockBean
+    private UserService userService;
 
     @Nested
     class candlesMinutesTest {

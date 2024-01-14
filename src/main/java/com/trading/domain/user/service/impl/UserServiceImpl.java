@@ -1,24 +1,21 @@
 package com.trading.domain.user.service.impl;
 
 import com.trading.client.application.response.GoogleUserRes;
-import com.trading.client.ui.request.SignupReq;
 import com.trading.common.constants.YesNo;
 import com.trading.common.errorcode.UserErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;
-import com.trading.domain.user.dto.UserDto;
 import com.trading.domain.user.repository.UserRepository;
 import com.trading.domain.user.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;

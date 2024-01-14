@@ -1,7 +1,7 @@
 package com.trading.upbit.feignClient;
 
+import com.trading.common.base.DefaultTestProfile;
 import com.trading.upbit.ticker.adapter.MarketPriceInquiry;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class MarketPriceInquiryTest {
+class MarketPriceInquiryTest implements DefaultTestProfile {
 
     private final String markets = "KRW-BTC";
 
@@ -23,4 +23,5 @@ class MarketPriceInquiryTest {
         System.out.println(upbitReturn);
         assertThat(upbitReturn).isNotNull();
     }
+
 }

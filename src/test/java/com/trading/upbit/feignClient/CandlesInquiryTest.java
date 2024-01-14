@@ -1,9 +1,9 @@
 package com.trading.upbit.feignClient;
 
 import com.trading.client.constant.CandlesUnitType;
+import com.trading.common.base.DefaultTestProfile;
 import com.trading.upbit.dto.response.UpbitCandlesMinutesRes;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest
-class CandlesInquiryTest {
+class CandlesInquiryTest implements DefaultTestProfile {
 
     @Autowired
     private CandlesInquiry candlesInquiry;
@@ -28,7 +28,7 @@ class CandlesInquiryTest {
         String market = "KRW-BTC";
         String DATE_FORMATTER = "yyyy-MM-dd'T'HH:mm:ss";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-        String to = LocalDateTime.of(2023, 11, 1,14,0,0).format(formatter);
+        String to = LocalDateTime.of(2023, 11, 1, 14, 0, 0).format(formatter);
         Integer count = 5;
 
         List<UpbitCandlesMinutesRes> upbitCandlesMinutesResList = candlesInquiry.getCandlesMinutes(unit.getCode(), market, to, count);
@@ -38,4 +38,5 @@ class CandlesInquiryTest {
         });
 
     }
+
 }

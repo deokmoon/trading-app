@@ -1,9 +1,9 @@
 package com.trading.upbit.ticker.adapter;
 
+import com.trading.common.base.DefaultTestProfile;
 import com.trading.config.socket.WebsocketClientEndpoint;
 import com.trading.upbit.ticker.dto.UpbitTickerRequestDto;
 import jakarta.websocket.DeploymentException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 @SpringBootTest
-class UpbitStompSessionHandlerTest {
+class UpbitStompSessionHandlerTest implements DefaultTestProfile {
 
     @Autowired
     private WebsocketClientEndpoint upbitWebSocketClient;

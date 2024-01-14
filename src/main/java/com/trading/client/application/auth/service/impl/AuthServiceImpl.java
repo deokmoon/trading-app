@@ -141,13 +141,32 @@ public class AuthServiceImpl implements AuthService {
         return EmailAuthRes.from(user);
     }
 
+    /**
+     * 로그인하기
+     */
+    @Override
+    public LoginRes login(LoginReq loginReq) {
+        // 이메일로 회원정보를 조회한다.
+        Optional<User> maybeUser = userService.findByEmailAndAuthType(loginReq.getEmail(), AuthType.EMAIL);
+        User user = maybeUser.get();
+        // 입력받은 비밀번호와 조회한 회원정보의 비밀번호를 비교한다.
+        boolean pwMatch = passwordEncoder.matches(loginReq.getPassword(), user.getPw());
 
+        if (Objects.isNull(user) || user.getAuthYn() != YesNo.YES || pwMatch == false) {
+            // 해당하는 계정이 없음 || 이메일이 인증된 상태가 아님 || 비밀번호가 일치하지 않음 -> 401 에러
+            throw new TradRuntimeException(AuthErrorCode.FAIL_LOGIN);
+        }
+        LoginRes.UserRes userRes = LoginRes.UserRes.of(user, loginReq.getAutoLogin());
 
-
-
-
-
-
+        // 토큰을 생성한다.
+        TokenRes tokenRes = issueNewToken(userRes);
+        // 일치하면 로그인 정보 리턴
+        return LoginRes.builder()
+                .accessToken(tokenRes.getAccessToken())
+                .refreshTokenKey(tokenRes.getRefreshTokenKey())
+                .userRes(userRes)
+                .build();
+    }
 
     /**
      * 로그아웃하기
@@ -157,8 +176,6 @@ public class AuthServiceImpl implements AuthService {
         Boolean isSuccess = redisService.delValue(logoutReq.getRefreshTokenKey());
         return new LogoutRes(isSuccess.toString());
     }
-
-
 
     /**
      * 비밀번호 초기화 이메일 발송하기
@@ -180,7 +197,6 @@ public class AuthServiceImpl implements AuthService {
             emailService.sendEmail(EmailDto.of(EmailType.RESET_PASSWORD, user));
 
         }
-
     }
 
     /**
@@ -205,7 +221,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String resetPassword(ResetPasswordReq req) {
         // 사용자정보 조회하기
-        User user = userService.getUserByEmailAndAuthKey(req.getEmail(), req.getAuthKey());
+        User user = userService.getUserByUserIdAndAuthKey(req.getUserId(), req.getAuthKey());
         if (Objects.isNull(user)) {
             // 일치하는 사용자정보가 없으면 -> 404
             throw new TradRuntimeException(AuthErrorCode.NO_EMAIL);
@@ -259,34 +275,9 @@ public class AuthServiceImpl implements AuthService {
     /**
      * apple 로그인을 인증한다
      */
-    // verifyApple
+    // TODO verifyApple
 
-    /**
-     * 로그인하기
-     */
-    @Override
-    public LoginRes login(LoginReq loginReq) {
-        // 이메일로 회원정보를 조회한다.
-        Optional<User> maybeUser = userService.findByEmailAndAuthType(loginReq.getEmail(), AuthType.EMAIL);
-        User user = maybeUser.get();
-        // 입력받은 비밀번호와 조회한 회원정보의 비밀번호를 비교한다.
-        boolean pwMatch = passwordEncoder.matches(loginReq.getPassword(), user.getPw());
 
-        if (Objects.isNull(user) || user.getAuthYn() != YesNo.YES || pwMatch == false) {
-            // 해당하는 계정이 없음 || 이메일이 인증된 상태가 아님 || 비밀번호가 일치하지 않음 -> 401 에러
-            throw new TradRuntimeException(AuthErrorCode.FAIL_LOGIN);
-        }
-        LoginRes.UserRes userRes = LoginRes.UserRes.of(user, loginReq.getAutoLogin());
-
-        // 토큰을 생성한다.
-        TokenRes tokenRes = issueNewToken(userRes);
-        // 일치하면 로그인 정보 리턴
-        return LoginRes.builder()
-                .accessToken(tokenRes.getAccessToken())
-                .refreshTokenKey(tokenRes.getRefreshTokenKey())
-                .userRes(userRes)
-                .build();
-    }
 
     /**
      * 신규 AccessToken, RefreshToken 생성하기

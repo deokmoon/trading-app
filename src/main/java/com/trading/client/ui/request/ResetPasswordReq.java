@@ -8,9 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 @Getter
 public class ResetPasswordReq {
 
-    @Description("이메일")
+    @Description("사용자ID")
     @NotBlank
-    private String email;
+    private String userId;
 
     @Description("인증키")
     @NotBlank

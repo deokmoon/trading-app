@@ -1,11 +1,9 @@
 package com.trading.domain.user.service;
 
 import com.trading.client.application.response.GoogleUserRes;
-import com.trading.client.ui.request.SignupReq;
 import com.trading.common.constants.YesNo;
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;
-import com.trading.domain.user.dto.UserDto;
 
 import java.util.Optional;
 

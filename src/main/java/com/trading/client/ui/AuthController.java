@@ -136,7 +136,7 @@ public class AuthController {
      * 비밀번호 초기화하기
      */
     @PostMapping("/password/reset")
-    public String resetPassword(@RequestParam ResetPasswordReq req) {
+    public String resetPassword(@RequestBody ResetPasswordReq req) {
         String userId = authService.resetPassword(req);
         return userId;
     }
