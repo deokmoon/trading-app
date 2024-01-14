@@ -5,7 +5,7 @@ echo "> 현재 환경 확인"
 
 ACTIVE_PROFILE=$1
 
-echo "> 현재 환경: ACTIVE_PROFILE"
+echo "> 현재 환경: ${ACTIVE_PROFILE}"
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
