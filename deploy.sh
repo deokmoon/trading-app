@@ -34,6 +34,6 @@ chmod +x $JAR_NAME
 echo "> $JAR_NAME 실행"
 
 #nohup /opt/java/openjdk/bin/java -jar -Dspring.config.location=classpath:/application.yml,classpath:/application-oauth.yml,classpath:/application-real-db.yml,classpath:/application-$IDLE_PROFILE.yml -Dspring.profiles.active=$IDLE_PROFILE $JAR_NAME > nohup.out 2>&1 &
-nohup /opt/java/openjdk/bin/java -jar -Dspring.config.location=classpath:/application-$ACTIVE_PROFILE.yml -Dspring.profiles.active=$ACTIVE_PROFILE $JAR_NAME > nohup.out 2>&1 &
+nohup /opt/java/openjdk/bin/java -jar -Dspring.profiles.active=$ACTIVE_PROFILE $JAR_NAME > nohup.out 2>&1 &
 
 echo "> 배포완료"
