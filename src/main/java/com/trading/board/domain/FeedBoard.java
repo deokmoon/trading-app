@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -39,7 +40,7 @@ public class FeedBoard extends BaseTimeEntity{
     private byte[] image;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<FeedComment> comments;
+    private List<FeedComment> comments = new ArrayList<>();
 
     private String marketCode;
 

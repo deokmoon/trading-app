@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/feed")
+@RequestMapping("/feed/board")
 public class FeedBoardController {
 
 
