@@ -27,7 +27,7 @@ class CandlesInquiryTest {
         String market = "KRW-BTC";
         String DATE_FORMATTER = "yyyy-MM-dd'T'HH:mm:ss";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-        String to = LocalDateTime.of(2023, 11, 1,14,0,0).format(formatter);
+        String to = LocalDateTime.of(2023, 11, 1, 14, 0, 0).format(formatter);
         Integer count = 5;
 
         List<UpbitCandlesMinutesRes> upbitCandlesMinutesResList = candlesInquiry.getCandlesMinutes(unit.getCode(), market, to, count);
@@ -37,4 +37,5 @@ class CandlesInquiryTest {
         });
 
     }
+
 }

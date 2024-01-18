@@ -22,4 +22,5 @@ class MarketPriceInquiryTest {
         System.out.println(upbitReturn);
         assertThat(upbitReturn).isNotNull();
     }
+
 }

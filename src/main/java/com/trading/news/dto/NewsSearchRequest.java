@@ -1,12 +1,13 @@
 package com.trading.news.dto;
 
 import com.trading.news.constant.Sort;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 import static com.trading.news.constant.NaverKakaoConstant.DEFAULT_PAGE;
 import static com.trading.news.constant.NaverKakaoConstant.DEFAULT_SIZE;

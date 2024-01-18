@@ -1,0 +1,12 @@
+####################################################################################################
+# EnableAutoConfiguration
+####################################################################################################
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.trading.config.autoconfigure.jackson.TradJacksonAutoConfiguration,\
+  com.trading.config.autoconfigure.web.servlet.mvc.TradApiResponseAutoConfiguration,\
+  com.trading.config.autoconfigure.web.servlet.mvc.TradExceptionAutoConfiguration
+# AutoConfigureWebMvc auto-configuration imports
+org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc=\
+  com.trading.config.autoconfigure.jackson.TradJacksonAutoConfiguration,\
+  com.trading.config.autoconfigure.web.servlet.mvc.TradApiResponseAutoConfiguration,\
+  com.trading.config.autoconfigure.web.servlet.mvc.TradExceptionAutoConfiguration
