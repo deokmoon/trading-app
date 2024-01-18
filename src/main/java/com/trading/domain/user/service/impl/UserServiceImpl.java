@@ -77,8 +77,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByEmailAndAuthKey(String email, String authKey) {
-        Optional<User> maybeUser = userRepository.findByUserIdAndAuthKey(email, authKey);
+    public User findByEmailAndAuthKey(String email, String authKey) {
+        Optional<User> maybeUser = userRepository.findByEmailAndAuthKey(email, authKey);
         if (maybeUser.isPresent()) {
             return maybeUser.get();
         } else {

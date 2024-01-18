@@ -21,7 +21,7 @@ public interface UserService {
 
     User getUserByUserIdAndAuthKey(String userId, String authKey);
 
-    User getUserByEmailAndAuthKey(String email, String authKey);
+    User findByEmailAndAuthKey(String email, String authKey);
 
     User getOrCreateUser(GoogleUserRes googleUserRes, AuthType authType);
 

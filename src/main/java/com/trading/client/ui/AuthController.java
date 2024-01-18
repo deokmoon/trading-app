@@ -4,6 +4,7 @@ import com.trading.client.application.auth.service.AuthService;
 import com.trading.client.application.response.FindPasswordAuthRes;
 import com.trading.client.application.response.ReissueAccessTokenRes;
 import com.trading.client.ui.request.CheckDuplEmailReq;
+import com.trading.client.ui.request.EmailAuthReq;
 import com.trading.client.ui.request.FindPasswordReq;
 import com.trading.client.ui.request.GoogleVerifyReq;
 import com.trading.client.ui.request.LoginReq;
@@ -90,9 +91,9 @@ public class AuthController {
     /**
      * 이메일 인증하기
      */
-    @GetMapping("/email/{userId}/{authKey}")
-    public EmailAuthRes emailAuth(@Valid @PathVariable String userId, @PathVariable String authKey) {
-        EmailAuthRes emailAuthRes = authService.emailAuth(userId, authKey);
+    @PostMapping("/email")
+    public EmailAuthRes emailAuth(@Valid @RequestBody EmailAuthReq emailAuthReq) {
+        EmailAuthRes emailAuthRes = authService.emailAuth(emailAuthReq);
         return emailAuthRes;
     }
 

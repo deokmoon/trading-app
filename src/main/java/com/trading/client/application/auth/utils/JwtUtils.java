@@ -15,7 +15,7 @@ import java.util.HashMap;
 public final class JwtUtils {
 
     public JwtUtils() {
-        throw new UnsupportedOperationException("JwtUtils Class");
+        throw new UnsupportedOperationException("JwtUtils");
     }
 
     /**

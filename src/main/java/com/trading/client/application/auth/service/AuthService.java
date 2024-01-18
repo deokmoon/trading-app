@@ -3,6 +3,7 @@ package com.trading.client.application.auth.service;
 import com.trading.client.application.response.FindPasswordAuthRes;
 import com.trading.client.application.response.ReissueAccessTokenRes;
 import com.trading.client.ui.request.CheckDuplEmailReq;
+import com.trading.client.ui.request.EmailAuthReq;
 import com.trading.client.ui.request.FindPasswordReq;
 import com.trading.client.ui.request.GoogleVerifyReq;
 import com.trading.client.ui.request.LoginReq;
@@ -25,7 +26,7 @@ public interface AuthService {
 
     SignupRes signup(SignupReq signupReq);
 
-    EmailAuthRes emailAuth(String userId, String authKey);
+    EmailAuthRes emailAuth(EmailAuthReq emailAuthReq);
 
     LoginRes login(LoginReq loginReq);
 

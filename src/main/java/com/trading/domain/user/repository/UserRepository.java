@@ -19,4 +19,6 @@ public interface UserRepository extends Repository<User, String> {
 
     Optional<User> findByUserIdAndAuthKey(String userId, String authKey);
 
+    Optional<User> findByEmailAndAuthKey(String email, String authKey);
+
 }

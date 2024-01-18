@@ -3,7 +3,6 @@ package com.trading.domain.email.dto;
 import com.trading.common.annotation.Description;
 import com.trading.domain.email.constants.EmailType;
 import com.trading.domain.user.User;
-import com.trading.domain.user.dto.UserDto;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -20,8 +19,11 @@ public class EmailDto {
     @Description("내용")
     private String text;
 
-    @Description("URL QUERY")
-    private String urlQuery;
+//    @Description("URL QUERY")
+//    private String urlQuery;
+
+    @Description("Code")
+    private String code;
 
     public static EmailDto of(String emailTo, String subject, String text) {
         return EmailDto.builder()
@@ -33,17 +35,18 @@ public class EmailDto {
 
     public static EmailDto of(EmailType emailType, User user) {
 
-        String urlQuery = new StringBuilder("?screen=")
-                .append(emailType.getCode())
-                .append("&userID=").append(user.getUserId().toLowerCase())
-                .append("&authKey=").append(user.getAuthKey().toLowerCase())
-                .toString();
+//        String urlQuery = new StringBuilder("?screen=")
+//                .append(emailType.getCode())
+//                .append("&userID=").append(user.getUserId().toLowerCase())
+//                .append("&authKey=").append(user.getAuthKey().toLowerCase())
+//                .toString();
 
         return EmailDto.builder()
                 .emailTo(user.getEmail())
                 .subject(emailType.getSubject())
                 .text(emailType.getText())
-                .urlQuery(urlQuery)
+//                .urlQuery(urlQuery)
+                .code(user.getAuthKey())
                 .build();
     }
 

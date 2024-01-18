@@ -43,7 +43,8 @@ public class SignupReq {
 
     public User toUser(String hashedPw) {
         String userId = AuthUtils.getRandomValue(16);
-        String authKey = AuthUtils.getRandomValue(16);
+//        String authKey = AuthUtils.getRandomValue(16);
+        String authKey = AuthUtils.generateEmailCode();
 
         return User.builder()
                 .userId(userId)

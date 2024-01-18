@@ -9,6 +9,7 @@ import com.trading.client.application.response.GoogleUserRes;
 import com.trading.client.application.response.ReissueAccessTokenRes;
 import com.trading.client.application.response.TokenRes;
 import com.trading.client.ui.request.CheckDuplEmailReq;
+import com.trading.client.ui.request.EmailAuthReq;
 import com.trading.client.ui.request.FindPasswordReq;
 import com.trading.client.ui.request.GoogleVerifyReq;
 import com.trading.client.ui.request.LoginReq;
@@ -115,6 +116,7 @@ public class AuthServiceImpl implements AuthService {
         User user = userService.createUser(signupReq.toUser(hashedPw));
 
         // 회원가입 인증 이메일 발송
+        // TODO 비동기 처리 알아보자
         emailService.sendEmail(EmailDto.of(EmailType.SIGNUP, user));
 
         return SignupRes.builder()
@@ -127,9 +129,9 @@ public class AuthServiceImpl implements AuthService {
      */
     @Transactional
     @Override
-    public EmailAuthRes emailAuth(String userId, String authKey) {
+    public EmailAuthRes emailAuth(EmailAuthReq emailAuthReq) {
         // 사용자정보 조회하기
-        User user = userService.getUserByUserIdAndAuthKey(userId, authKey);
+        User user = userService.findByEmailAndAuthKey(emailAuthReq.getEmail(), emailAuthReq.getCode());
 
         if (Objects.isNull(user)) {
             // 일치하는 사용자정보가 없으면 -> 401
@@ -148,6 +150,9 @@ public class AuthServiceImpl implements AuthService {
     public LoginRes login(LoginReq loginReq) {
         // 이메일로 회원정보를 조회한다.
         Optional<User> maybeUser = userService.findByEmailAndAuthType(loginReq.getEmail(), AuthType.EMAIL);
+        if (maybeUser.isPresent() == false) {
+            throw new TradRuntimeException(AuthErrorCode.FAIL_LOGIN);
+        }
         User user = maybeUser.get();
         // 입력받은 비밀번호와 조회한 회원정보의 비밀번호를 비교한다.
         boolean pwMatch = passwordEncoder.matches(loginReq.getPassword(), user.getPw());

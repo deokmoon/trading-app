@@ -29,8 +29,8 @@ public class EmailServiceImpl implements EmailService {
         String host = StringUtils.hasText(proxyHost) ? proxyHost : httpServletRequest.getHeader("host");
 
         String text = new StringBuilder(emailDto.getText())
-                .append(host)
-                .append(emailDto.getUrlQuery())
+//                .append(host)
+                .append(emailDto.getCode())
                 .toString();
 
         SimpleMailMessage message = new SimpleMailMessage();
