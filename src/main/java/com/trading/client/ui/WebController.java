@@ -1,6 +1,6 @@
 package com.trading.client.ui;
 
-import com.trading.client.application.UpbitService;
+import com.trading.client.application.upbit.service.UpbitService;
 import com.trading.client.dto.requests.CandlesMinutesReq;
 import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.upbit.ticker.dto.InquiryPriceOrderBookDto;
@@ -23,9 +23,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static com.trading.constant.FileWriteConstants.JSON_FORMAT;
-import static com.trading.constant.FileWriteConstants.JSON_RESPONSE_DIRECTORY;
-import static com.trading.constant.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_NAME;
+import static com.trading.common.constants.FileWriteConstants.JSON_FORMAT;
+import static com.trading.common.constants.FileWriteConstants.JSON_RESPONSE_DIRECTORY;
+import static com.trading.common.constants.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_NAME;
 
 @RequiredArgsConstructor
 @RestController

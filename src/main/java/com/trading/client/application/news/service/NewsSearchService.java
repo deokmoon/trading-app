@@ -1,4 +1,4 @@
-package com.trading.client.application;
+package com.trading.client.application.news.service;
 
 import com.trading.news.client.NewsSearchClient;
 import com.trading.news.dto.NewsSearchRequest;

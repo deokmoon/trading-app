@@ -1,4 +1,4 @@
-package com.trading.constant;
+package com.trading.common.constants;
 
 public class WebClientConstants {
     // WEB CLIENT - HTTP CLIENT

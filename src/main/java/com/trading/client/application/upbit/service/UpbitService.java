@@ -1,4 +1,4 @@
-package com.trading.client.application;
+package com.trading.client.application.upbit.service;
 
 import com.trading.client.dto.requests.CandlesMinutesReq;
 import com.trading.client.dto.response.CandlesMinutesRes;

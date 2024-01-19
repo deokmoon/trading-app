@@ -1,6 +1,6 @@
 package com.trading.client.ui;
 
-import com.trading.client.application.UpbitService;
+import com.trading.client.application.upbit.service.UpbitService;
 import com.trading.client.dto.response.CandlesMinutesRes;
 import com.trading.common.base.BaseMockMvcTest;
 import com.trading.domain.user.service.UserService;

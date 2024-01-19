@@ -1,6 +1,6 @@
 package com.trading.domain.user.service;
 
-import com.trading.client.application.response.GoogleUserRes;
+import com.trading.client.application.auth.response.GoogleUserRes;
 import com.trading.common.constants.YesNo;
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;

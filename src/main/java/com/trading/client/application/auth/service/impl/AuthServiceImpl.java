@@ -1,13 +1,13 @@
 package com.trading.client.application.auth.service.impl;
 
 import com.trading.client.application.auth.service.AuthService;
-import com.trading.client.application.GoogleAuthService;
+import com.trading.client.application.auth.service.GoogleAuthService;
 import com.trading.client.application.auth.utils.JwtUtils;
-import com.trading.client.application.constants.Token;
-import com.trading.client.application.response.FindPasswordAuthRes;
-import com.trading.client.application.response.GoogleUserRes;
-import com.trading.client.application.response.ReissueAccessTokenRes;
-import com.trading.client.application.response.TokenRes;
+import com.trading.client.application.auth.constants.Token;
+import com.trading.client.application.auth.response.FindPasswordAuthRes;
+import com.trading.client.application.auth.response.GoogleUserRes;
+import com.trading.client.application.auth.response.ReissueAccessTokenRes;
+import com.trading.client.application.auth.response.TokenRes;
 import com.trading.client.ui.request.CheckDuplEmailReq;
 import com.trading.client.ui.request.EmailAuthReq;
 import com.trading.client.ui.request.FindPasswordReq;

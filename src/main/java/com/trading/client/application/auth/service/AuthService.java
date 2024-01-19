@@ -1,7 +1,7 @@
 package com.trading.client.application.auth.service;
 
-import com.trading.client.application.response.FindPasswordAuthRes;
-import com.trading.client.application.response.ReissueAccessTokenRes;
+import com.trading.client.application.auth.response.FindPasswordAuthRes;
+import com.trading.client.application.auth.response.ReissueAccessTokenRes;
 import com.trading.client.ui.request.CheckDuplEmailReq;
 import com.trading.client.ui.request.EmailAuthReq;
 import com.trading.client.ui.request.FindPasswordReq;
