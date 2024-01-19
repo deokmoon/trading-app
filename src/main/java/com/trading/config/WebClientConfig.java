@@ -21,16 +21,16 @@ import reactor.netty.resources.ConnectionProvider;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import static com.trading.constant.WebClientConstants.CONNECTION_MAX_IDLE_TIME;
-import static com.trading.constant.WebClientConstants.CONNECTION_MAX_TIMEOUT;
-import static com.trading.constant.WebClientConstants.CONNECTION_NAME;
-import static com.trading.constant.WebClientConstants.CONNECTION_PENDING_ACQUIRE_COUNT;
-import static com.trading.constant.WebClientConstants.CONNECTION_PENDING_ACQUIRE_TIMEOUT;
-import static com.trading.constant.WebClientConstants.CONNECT_TIMEOUT_MILLIS_VALUE;
-import static com.trading.constant.WebClientConstants.MAX_INMEMORY_SIZE;
-import static com.trading.constant.WebClientConstants.READ_TIMEOUT_MILLS_VALUE;
-import static com.trading.constant.WebClientConstants.RESPONSE_TIMEOUT_MILLS_VALUE;
-import static com.trading.constant.WebClientConstants.WRITE_TIMEOUT_MILLS_VALUE;
+import static com.trading.common.constants.WebClientConstants.CONNECTION_MAX_IDLE_TIME;
+import static com.trading.common.constants.WebClientConstants.CONNECTION_MAX_TIMEOUT;
+import static com.trading.common.constants.WebClientConstants.CONNECTION_NAME;
+import static com.trading.common.constants.WebClientConstants.CONNECTION_PENDING_ACQUIRE_COUNT;
+import static com.trading.common.constants.WebClientConstants.CONNECTION_PENDING_ACQUIRE_TIMEOUT;
+import static com.trading.common.constants.WebClientConstants.CONNECT_TIMEOUT_MILLIS_VALUE;
+import static com.trading.common.constants.WebClientConstants.MAX_INMEMORY_SIZE;
+import static com.trading.common.constants.WebClientConstants.READ_TIMEOUT_MILLS_VALUE;
+import static com.trading.common.constants.WebClientConstants.RESPONSE_TIMEOUT_MILLS_VALUE;
+import static com.trading.common.constants.WebClientConstants.WRITE_TIMEOUT_MILLS_VALUE;
 
 @Configuration
 public class WebClientConfig {

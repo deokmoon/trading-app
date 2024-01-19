@@ -3,7 +3,6 @@ package com.trading.client.ui.response;
 import com.trading.common.constants.YesNo;
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;
-import com.trading.domain.user.dto.UserDto;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -29,7 +28,7 @@ public class SignupRes {
 
         private String profilePicUrl;
 
-        private String authKey;
+//        private String authKey;
 
         private YesNo authYn;
 
@@ -43,7 +42,7 @@ public class SignupRes {
                     .name(user.getName())
                     .profile(user.getProfile())
                     .profilePicUrl(user.getProfilePicUrl())
-                    .authKey(user.getAuthKey())
+//                    .authKey(user.getAuthKey())
                     .authYn(user.getAuthYn())
                     .authType(user.getAuthType())
                     .build();

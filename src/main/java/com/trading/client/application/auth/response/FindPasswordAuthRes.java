@@ -1,4 +1,4 @@
-package com.trading.client.application.response;
+package com.trading.client.application.auth.response;
 
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;

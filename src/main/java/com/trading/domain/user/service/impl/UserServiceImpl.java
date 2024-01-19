@@ -1,6 +1,6 @@
 package com.trading.domain.user.service.impl;
 
-import com.trading.client.application.response.GoogleUserRes;
+import com.trading.client.application.auth.response.GoogleUserRes;
 import com.trading.common.constants.YesNo;
 import com.trading.common.errorcode.UserErrorCode;
 import com.trading.common.exception.TradRuntimeException;

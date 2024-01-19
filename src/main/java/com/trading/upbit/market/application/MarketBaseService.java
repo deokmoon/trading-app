@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.trading.constant.FileWriteConstants.JSON_FORMAT;
-import static com.trading.constant.FileWriteConstants.JSON_RESPONSE_DIRECTORY;
-import static com.trading.constant.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_NAME;
+import static com.trading.common.constants.FileWriteConstants.JSON_FORMAT;
+import static com.trading.common.constants.FileWriteConstants.JSON_RESPONSE_DIRECTORY;
+import static com.trading.common.constants.FileWriteConstants.UPBIT_MARKET_MASTER_FILE_NAME;
 import static com.trading.util.JsonFileWriter.writeJsonFile;
 
 @RequiredArgsConstructor

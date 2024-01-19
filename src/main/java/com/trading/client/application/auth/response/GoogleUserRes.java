@@ -1,10 +1,9 @@
-package com.trading.client.application.response;
+package com.trading.client.application.auth.response;
 
 import com.google.api.client.json.webtoken.JsonWebToken;
 import com.trading.common.constants.YesNo;
 import com.trading.domain.user.User;
 import com.trading.domain.user.constants.AuthType;
-import com.trading.domain.user.dto.UserDto;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.util.StringUtils;

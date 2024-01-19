@@ -1,6 +1,6 @@
 package com.trading.client.ui;
 
-import com.trading.client.application.NewsSearchService;
+import com.trading.client.application.news.service.NewsSearchService;
 import com.trading.news.dto.NewsSearchRequest;
 import com.trading.news.dto.NewsSearchResponse;
 import jakarta.validation.Valid;

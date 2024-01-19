@@ -1,4 +1,4 @@
-package com.trading.client.application.response;
+package com.trading.client.application.auth.response;
 
 import lombok.Getter;
 
