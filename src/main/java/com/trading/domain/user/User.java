@@ -1,8 +1,8 @@
 package com.trading.domain.user;
 
+import com.trading.domain.auth.utils.AuthUtils;
 import com.trading.common.annotation.Description;
 import com.trading.common.constants.YesNo;
-import com.trading.common.utils.CommonUtils;
 import com.trading.domain.user.constants.AuthType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -16,7 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,7 +31,7 @@ import java.util.HashMap;
 @EntityListeners(AuditingEntityListener.class)
 @DynamicInsert
 @DynamicUpdate
-@Table(name="UserBaseInfo")
+@Table(name = "UserBaseInfo")
 public class User {
 
     @Description("사용자ID")
@@ -80,10 +79,11 @@ public class User {
 
     public void authenticateEmail() {
         this.authYn = YesNo.YES;
+        this.authKey = "";
     }
 
     public void createAuthKey() {
-        this.authKey = CommonUtils.getRandomValue(16);
+        this.authKey = AuthUtils.generateEmailCode();
     }
 
     public void resetPassword(String hashedPassword) {
@@ -100,4 +100,5 @@ public class User {
         map.put("authType", authType);
         return map;
     }
+
 }

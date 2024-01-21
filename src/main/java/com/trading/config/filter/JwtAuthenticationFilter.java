@@ -1,6 +1,6 @@
 package com.trading.config.filter;
 
-import com.trading.client.application.auth.utils.JwtUtils;
+import com.trading.domain.auth.utils.JwtUtils;
 import com.trading.common.errorcode.JwtAuthenticationFilterErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.domain.user.User;
@@ -54,7 +54,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if ("GET" .equals(request.getMethod()) && uri.indexOf("/app-version") > -1) {
             // 요청 URL 이 GET /app-version 이면 -> ATK 체크 예외
             filterChain.doFilter(request, response);
+            return;
         }
+
         if (ObjectUtils.isEmpty(authorization)) {
             // access_token 이 없으면 401
             throw new TradRuntimeException(JwtAuthenticationFilterErrorCode.INVALID);
