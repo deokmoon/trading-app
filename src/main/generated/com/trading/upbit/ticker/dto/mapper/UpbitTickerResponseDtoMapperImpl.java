@@ -1,7 +1,9 @@
 package com.trading.upbit.ticker.dto.mapper;
 
-import com.trading.upbit.ticker.domain.UpbitTicker;
-import com.trading.upbit.ticker.dto.UpbitTickerResponseDto;
+import com.trading.domain.upbit.ticker.domain.UpbitTicker;
+import com.trading.domain.upbit.ticker.dto.UpbitTickerResponseDto;
+import com.trading.domain.upbit.ticker.dto.mapper.UpbitTickerResponseDtoMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;

@@ -21,4 +21,5 @@ public class YesNoConverter implements AttributeConverter<YesNo, String> {
         }
         throw new IllegalArgumentException("Unknown database value: " + dbData);
     }
+
 }

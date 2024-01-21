@@ -1,10 +1,11 @@
 package com.trading.news.dto.mapper;
 
-import com.trading.news.dto.NewsDocumentResponse;
-import com.trading.news.dto.NewsSearchRequest;
-import com.trading.news.dto.NewsSearchResponse;
-import com.trading.news.dto.naver.NaverNewsItem;
-import com.trading.news.dto.naver.NaverNewsSearchResult;
+import com.trading.apiclient.navernewssearch.response.NewsDocumentResponse;
+import com.trading.apiclient.navernewssearch.request.NewsSearchRequest;
+import com.trading.apiclient.navernewssearch.response.NewsSearchResponse;
+import com.trading.apiclient.navernewssearch.mapper.ResponseNaverMapper;
+import com.trading.apiclient.navernewssearch.response.NaverNewsItem;
+import com.trading.apiclient.navernewssearch.response.NaverNewsSearchResult;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
