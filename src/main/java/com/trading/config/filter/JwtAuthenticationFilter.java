@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.info("JwtAuthenticationFilter:doFilterInternal");
         String uri = request.getRequestURI();
         // TODO AppkeyFilter 의 doFilterInter 과 패턴체크가 일부 중복 "/(auth|weather|news|corona|docs)" 로?
-        Pattern pattern = Pattern.compile("/(auth/(index|login|initdata|appkey|email|password|check-dupl-email|signup|logout|google/verify)|weather|news|corona|docs)");
+        Pattern pattern = Pattern.compile("/(auth/(index|login|initdata|appkey|email|password|check-email-status|signup|logout|google/verify)|weather|news|corona|docs)");
 //        Pattern pattern = Pattern.compile("/auth/login");
         Matcher mat = pattern.matcher(uri);
         if (mat.find()) {

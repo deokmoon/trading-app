@@ -1,10 +1,10 @@
 package com.trading.domain.upbit.service.impl;
 
-import com.trading.controller.ui.request.CandlesMinutesReq;
-import com.trading.controller.ui.response.CandlesMinutesRes;
+import com.trading.controller.request.CandlesMinutesReq;
+import com.trading.controller.response.CandlesMinutesRes;
 import com.trading.domain.upbit.response.UpbitCandlesMinutesRes;
 import com.trading.apiclient.upbit.CandlesInquiry;
-import com.trading.domain.upbit.ticker.adapter.MarketPriceInquiry;
+import com.trading.apiclient.upbit.MarketPriceInquiry;
 import com.trading.domain.upbit.ticker.domain.UpbitTicker;
 import com.trading.domain.upbit.ticker.domain.UpbitTickerStorage;
 import com.trading.domain.upbit.ticker.dto.InquiryPriceOrderBookDto;

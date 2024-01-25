@@ -1,7 +1,7 @@
 package com.trading.domain.comment;
 
 import com.trading.config.orm.BaseTimeEntity;
-import com.trading.domain.board.FeedBoard;
+import com.trading.domain.board.Board;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +28,7 @@ public class FeedComment extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "board_id")
-    private FeedBoard board;
+    private Board board;
 
     @Lob
     private byte[] image;

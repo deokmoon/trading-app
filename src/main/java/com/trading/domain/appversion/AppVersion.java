@@ -2,6 +2,7 @@ package com.trading.domain.appversion;
 
 import com.trading.config.orm.BaseTimeEntity;
 import com.trading.domain.appversion.constants.AppType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,8 +16,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "AppVersionInfo")
 public class AppVersion extends BaseTimeEntity {
@@ -28,5 +29,11 @@ public class AppVersion extends BaseTimeEntity {
     private AppType appType;
 
     private String appVersion;
+
+    @Column(name = "cret_id")
+    private String createdBy;
+
+    @Column(name = "mod_id")
+    private String updatedBy;
 
 }

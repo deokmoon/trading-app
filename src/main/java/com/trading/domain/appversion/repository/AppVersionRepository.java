@@ -10,6 +10,6 @@ public interface AppVersionRepository extends Repository<AppVersion, String> {
 
     Optional<AppVersion> findTopByAppType(AppType appType);
 
-    String save(AppVersion appVersion);
+    AppVersion save(AppVersion appVersion);
 
 }

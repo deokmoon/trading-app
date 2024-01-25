@@ -35,7 +35,7 @@ public class AppKeyFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         log.info("AppKeyFilter:doFilterInternal");
         String uri = request.getRequestURI();
-        Pattern pattern = Pattern.compile("/(auth/(index|initdata|appkey|email|password|check-dupl-email|signup|logout|google/verify))");
+        Pattern pattern = Pattern.compile("/(auth/(index|initdata|appkey|email|password|check-email-status|signup|logout|google/verify))");
         Matcher mat = pattern.matcher(uri);
         if (mat.find()) {
             // 패턴에 일치하면 appKey 체크없이 통과
