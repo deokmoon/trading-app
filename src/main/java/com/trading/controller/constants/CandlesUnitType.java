@@ -1,6 +1,7 @@
 package com.trading.controller.constants;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.trading.common.constants.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,7 +10,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum CandlesUnitType {
+public enum CandlesUnitType implements BaseEnum {
     ONE("1", "1분"),
     THREE("3", "3분"),
     FIVE("5", "5분"),

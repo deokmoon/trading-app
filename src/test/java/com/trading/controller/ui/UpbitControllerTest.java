@@ -1,7 +1,8 @@
 package com.trading.controller.ui;
 
+import com.trading.controller.UpbitController;
 import com.trading.domain.upbit.service.impl.UpbitService;
-import com.trading.controller.ui.response.CandlesMinutesRes;
+import com.trading.controller.response.CandlesMinutesRes;
 import com.trading.common.base.BaseMockMvcTest;
 import com.trading.domain.user.service.UserService;
 import org.junit.jupiter.api.Disabled;

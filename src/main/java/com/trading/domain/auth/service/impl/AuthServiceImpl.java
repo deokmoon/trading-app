@@ -1,5 +1,25 @@
 package com.trading.domain.auth.service.impl;
 
+import com.trading.common.constants.YesNo;
+import com.trading.common.errorcode.AuthErrorCode;
+import com.trading.common.exception.TradRuntimeException;
+import com.trading.common.utils.CommonUtils;
+import com.trading.controller.constants.EmailStatus;
+import com.trading.controller.request.EmailStatusReq;
+import com.trading.controller.request.EmailAuthReq;
+import com.trading.controller.request.FindPasswordAuthReq;
+import com.trading.controller.request.FindPasswordReq;
+import com.trading.controller.request.GoogleVerifyReq;
+import com.trading.controller.request.LoginReq;
+import com.trading.controller.request.LogoutReq;
+import com.trading.controller.request.ReissueAccessTokenReq;
+import com.trading.controller.request.ResetPasswordReq;
+import com.trading.controller.request.SignupReq;
+import com.trading.controller.response.EmailStatusRes;
+import com.trading.controller.response.EmailAuthRes;
+import com.trading.controller.response.LoginRes;
+import com.trading.controller.response.LogoutRes;
+import com.trading.controller.response.SignupRes;
 import com.trading.domain.auth.constants.Token;
 import com.trading.domain.auth.response.FindPasswordAuthRes;
 import com.trading.domain.auth.response.GoogleUserRes;
@@ -8,25 +28,6 @@ import com.trading.domain.auth.response.TokenRes;
 import com.trading.domain.auth.service.AuthService;
 import com.trading.domain.auth.service.GoogleAuthService;
 import com.trading.domain.auth.utils.JwtUtils;
-import com.trading.controller.ui.request.CheckDuplEmailReq;
-import com.trading.controller.ui.request.EmailAuthReq;
-import com.trading.controller.ui.request.FindPasswordAuthReq;
-import com.trading.controller.ui.request.FindPasswordReq;
-import com.trading.controller.ui.request.GoogleVerifyReq;
-import com.trading.controller.ui.request.LoginReq;
-import com.trading.controller.ui.request.LogoutReq;
-import com.trading.controller.ui.request.ReissueAccessTokenReq;
-import com.trading.controller.ui.request.ResetPasswordReq;
-import com.trading.controller.ui.request.SignupReq;
-import com.trading.controller.ui.response.CheckDuplEmailRes;
-import com.trading.controller.ui.response.EmailAuthRes;
-import com.trading.controller.ui.response.LoginRes;
-import com.trading.controller.ui.response.LogoutRes;
-import com.trading.controller.ui.response.SignupRes;
-import com.trading.common.constants.YesNo;
-import com.trading.common.errorcode.AuthErrorCode;
-import com.trading.common.exception.TradRuntimeException;
-import com.trading.common.utils.CommonUtils;
 import com.trading.domain.email.constants.EmailType;
 import com.trading.domain.email.dto.EmailDto;
 import com.trading.domain.email.service.EmailService;
@@ -84,17 +85,17 @@ public class AuthServiceImpl implements AuthService {
     }
 
     /**
-     * 이메일주소 중복 체크하기
+     * 이메일주소 상태 확인하기
      */
     @Override
-    public CheckDuplEmailRes checkDuplEmail(CheckDuplEmailReq req) {
-        // 기존에 있는 이메일인지 확인한다.
+    public EmailStatusRes checkEmailStatus(EmailStatusReq req) {
         Optional<User> maybeUser = userService.findByEmailAndAuthType(req.getEmail(), AuthType.EMAIL);
-        maybeUser.ifPresent(user -> {
-            // 기존에 이메일이 있으면 -> 409
-            throw new TradRuntimeException(AuthErrorCode.DUPLICATED_EMAIL);
-        });
-        return new CheckDuplEmailRes(req.getEmail());
+        if (maybeUser.isPresent()) {
+            User user = maybeUser.get();
+            EmailStatus emailStatus = user.getAuthYn() == YesNo.YES ? EmailStatus.AUTH : EmailStatus.NO_AUTH;
+            return new EmailStatusRes(user.getEmail(), emailStatus);
+        }
+        return new EmailStatusRes(req.getEmail(), EmailStatus.NO_EXIST);
     }
 
     /**

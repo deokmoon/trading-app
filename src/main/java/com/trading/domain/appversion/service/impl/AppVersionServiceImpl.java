@@ -1,7 +1,7 @@
 package com.trading.domain.appversion.service.impl;
 
-import com.trading.controller.ui.request.AppVersionReq;
-import com.trading.controller.ui.response.AppVersionRes;
+import com.trading.controller.request.AppVersionReq;
+import com.trading.controller.response.AppVersionRes;
 import com.trading.common.errorcode.AppVersionErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.common.utils.MvcUtils;
@@ -31,7 +31,8 @@ public class AppVersionServiceImpl implements AppVersionService {
     @Override
     public String createAppVersion(AppVersionReq appVersionReq) {
         User user = MvcUtils.getLoginUser();
-        return appVersionRepository.save(appVersionReq.toAppVersion(user));
+        AppVersion appversion = appVersionRepository.save(appVersionReq.toAppVersion(user));
+        return appversion.getAppVersionId();
     }
 
 }

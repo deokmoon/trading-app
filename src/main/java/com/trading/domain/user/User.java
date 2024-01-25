@@ -1,5 +1,6 @@
 package com.trading.domain.user;
 
+import com.trading.config.orm.BaseTimeEntity;
 import com.trading.domain.auth.utils.AuthUtils;
 import com.trading.common.annotation.Description;
 import com.trading.common.constants.YesNo;
@@ -10,6 +11,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,14 +27,13 @@ import java.util.HashMap;
 
 @Getter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@DynamicInsert
+//@DynamicUpdate
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-@DynamicInsert
-@DynamicUpdate
 @Table(name = "UserBaseInfo")
-public class User {
+public class User extends BaseTimeEntity {
 
     @Description("사용자ID")
     @Id
@@ -50,16 +51,16 @@ public class User {
     @Description("프로필 문구")
     private String profile;
 
-    @Description("생성일시")
-    @CreatedDate
-    private LocalDateTime cretDtime;
+//    @Description("생성일시")
+//    @CreatedDate
+//    private LocalDateTime cretDtime;
 
     @Description("생성자ID")
     private String cretId;
 
-    @Description("수정일시")
-    @LastModifiedDate
-    private LocalDateTime modDtime;
+//    @Description("수정일시")
+//    @LastModifiedDate
+//    private LocalDateTime modDtime;
 
     @Description("수정자ID")
     private String modId;

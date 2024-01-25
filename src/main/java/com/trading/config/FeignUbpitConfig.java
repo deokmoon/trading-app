@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-@EnableFeignClients("com.trading.upbit")
+@EnableFeignClients("com.trading.apiclient.upbit")
 public class FeignUbpitConfig {
 
     /**
