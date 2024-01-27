@@ -43,8 +43,8 @@ public class BoardController {
     }
 
     @DeleteMapping("/{boardId}")
-    public String deleteBoard(@PathVariable String boardId) {
-        return boardService.deleteBoard(boardId);
+    public void deleteBoard(@PathVariable String boardId) {
+        boardService.deleteBoard(boardId);
     }
 
 }

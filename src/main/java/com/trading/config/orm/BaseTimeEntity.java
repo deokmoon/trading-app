@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,14 +17,14 @@ public class BaseTimeEntity {
 
     @Column(name = "cret_dtime")
     @CreatedDate
-    private LocalDateTime createdDatetime;
+    private LocalDateTime cretDatetime;
 
 //    @Column(name = "cret_id")
 //    private String createdBy;
 
     @Column(name = "mod_dtime")
     @LastModifiedDate
-    private LocalDateTime updateDatetime;
+    private LocalDateTime modDatetime;
 
 //    @Column(name = "mod_id")
 //    private String updatedBy;

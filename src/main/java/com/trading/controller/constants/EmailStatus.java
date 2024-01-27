@@ -8,14 +8,14 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum EmailStatus implements BaseEnum {
-    AUTH("a", "인증된 이메일"),
-    NO_AUTH("na", "미인증된 이메일"),
-    NO_EXIST("ne", "없는 이메일"),
+    AUTH("a", "Trading app account is authorized"),
+    NO_AUTH("na", "Trading app account is NOT authorized"),
+    NO_EXIST("ne", "Trading app account NOT found"),
     ;
 
     @JsonValue
     private String code;
 
-    private String desc;
+    private String message;
 }
 

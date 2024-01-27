@@ -1,12 +1,11 @@
 package com.trading.domain.user;
 
 import com.trading.config.orm.BaseTimeEntity;
-import com.trading.domain.auth.utils.AuthUtils;
+import com.trading.application.auth.utils.AuthUtils;
 import com.trading.common.annotation.Description;
 import com.trading.common.constants.YesNo;
 import com.trading.domain.user.constants.AuthType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
@@ -16,13 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Getter

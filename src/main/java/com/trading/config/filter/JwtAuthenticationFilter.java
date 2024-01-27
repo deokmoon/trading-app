@@ -1,6 +1,6 @@
 package com.trading.config.filter;
 
-import com.trading.domain.auth.utils.JwtUtils;
+import com.trading.application.auth.utils.JwtUtils;
 import com.trading.common.errorcode.JwtAuthenticationFilterErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.domain.user.User;

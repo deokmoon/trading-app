@@ -30,9 +30,9 @@ public class AppVersionRes {
                 .appVersionId(appVersion.getAppVersionId())
                 .appType(appVersion.getAppType())
                 .appVersion(appVersion.getAppVersion())
-                .createdDatetime(appVersion.getCreatedDatetime())
+                .createdDatetime(appVersion.getCretDatetime())
                 .createdBy(appVersion.getCreatedBy())
-                .updateDatetime(appVersion.getUpdateDatetime())
+                .updateDatetime(appVersion.getModDatetime())
                 .updatedBy(appVersion.getUpdatedBy())
                 .build();
     }

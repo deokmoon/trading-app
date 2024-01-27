@@ -1,5 +1,8 @@
-package com.trading.domain.auth.service.impl;
+package com.trading.application.auth.impl;
 
+import com.trading.application.auth.constants.Token;
+import com.trading.application.auth.AuthService;
+import com.trading.application.auth.GoogleAuthService;
 import com.trading.common.constants.YesNo;
 import com.trading.common.errorcode.AuthErrorCode;
 import com.trading.common.exception.TradRuntimeException;
@@ -20,14 +23,11 @@ import com.trading.controller.response.EmailAuthRes;
 import com.trading.controller.response.LoginRes;
 import com.trading.controller.response.LogoutRes;
 import com.trading.controller.response.SignupRes;
-import com.trading.domain.auth.constants.Token;
-import com.trading.domain.auth.response.FindPasswordAuthRes;
-import com.trading.domain.auth.response.GoogleUserRes;
-import com.trading.domain.auth.response.ReissueAccessTokenRes;
-import com.trading.domain.auth.response.TokenRes;
-import com.trading.domain.auth.service.AuthService;
-import com.trading.domain.auth.service.GoogleAuthService;
-import com.trading.domain.auth.utils.JwtUtils;
+import com.trading.application.auth.response.FindPasswordAuthRes;
+import com.trading.application.auth.response.GoogleUserRes;
+import com.trading.application.auth.response.ReissueAccessTokenRes;
+import com.trading.application.auth.response.TokenRes;
+import com.trading.application.auth.utils.JwtUtils;
 import com.trading.domain.email.constants.EmailType;
 import com.trading.domain.email.dto.EmailDto;
 import com.trading.domain.email.service.EmailService;
@@ -93,9 +93,9 @@ public class AuthServiceImpl implements AuthService {
         if (maybeUser.isPresent()) {
             User user = maybeUser.get();
             EmailStatus emailStatus = user.getAuthYn() == YesNo.YES ? EmailStatus.AUTH : EmailStatus.NO_AUTH;
-            return new EmailStatusRes(user.getEmail(), emailStatus);
+            return EmailStatusRes.of(user.getEmail(), emailStatus);
         }
-        return new EmailStatusRes(req.getEmail(), EmailStatus.NO_EXIST);
+        return EmailStatusRes.of(req.getEmail(), EmailStatus.NO_EXIST);
     }
 
     /**

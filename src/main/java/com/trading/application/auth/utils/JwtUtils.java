@@ -1,4 +1,4 @@
-package com.trading.domain.auth.utils;
+package com.trading.application.auth.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

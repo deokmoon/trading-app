@@ -30,7 +30,7 @@ public class FeedBoardCommentReplyResponse {
                 .id(commentReply.getId().toString())
                 .image(Base64.getEncoder().encodeToString(commentReply.getImage()))
                 .writer(commentReply.getWriter())
-                .createdDate(commentReply.getCreatedDatetime().toString())
+                .createdDate(commentReply.getCretDatetime().toString())
                 .reply(commentReply.getReply())
                 .likeCount(commentReply.getLikeCount())
                 .build();
