@@ -1,7 +1,7 @@
-package com.trading.domain.auth.service;
+package com.trading.application.auth;
 
-import com.trading.domain.auth.response.FindPasswordAuthRes;
-import com.trading.domain.auth.response.ReissueAccessTokenRes;
+import com.trading.application.auth.response.FindPasswordAuthRes;
+import com.trading.application.auth.response.ReissueAccessTokenRes;
 import com.trading.controller.request.EmailStatusReq;
 import com.trading.controller.request.EmailAuthReq;
 import com.trading.controller.request.FindPasswordAuthReq;

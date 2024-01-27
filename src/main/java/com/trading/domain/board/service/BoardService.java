@@ -16,6 +16,6 @@ public interface BoardService {
 
     String updateBoard(UpdateBoardReq req);
 
-    String deleteBoard(String boardId);
+    void deleteBoard(String boardId);
 
 }

@@ -18,7 +18,7 @@ public class CreateBoardReq {
         return Board.builder()
                 .boardId(boardId)
                 .subject(subject)
-                .desc(desc)
+                .boardDesc(desc)
                 .cretId(user.getUserId())
                 .modId(user.getUserId())
                 .build();

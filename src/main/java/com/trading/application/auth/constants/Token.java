@@ -1,4 +1,4 @@
-package com.trading.domain.auth.constants;
+package com.trading.application.auth.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

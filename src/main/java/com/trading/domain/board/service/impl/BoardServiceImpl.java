@@ -1,5 +1,7 @@
 package com.trading.domain.board.service.impl;
 
+import com.trading.common.errorcode.BoardErrorCode;
+import com.trading.common.exception.TradRuntimeException;
 import com.trading.common.utils.MvcUtils;
 import com.trading.controller.board.request.BoardListReq;
 import com.trading.controller.board.request.CreateBoardReq;
@@ -13,6 +15,8 @@ import com.trading.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -35,19 +39,29 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardRes getBoard(String boardId) {
-        return null;
+        Optional<Board> maybeBoard = boardRepository.findByBoardId(boardId);
+        return maybeBoard
+                .map(BoardRes::from)
+                .orElseThrow(() -> new TradRuntimeException(BoardErrorCode.NO_BOARD));
     }
 
     @Transactional
     @Override
     public String updateBoard(UpdateBoardReq req) {
-        return null;
+        Optional<Board> maybeBoard = boardRepository.findByBoardId(req.getBoardId());
+        return maybeBoard
+                .map(board -> {
+                    board.setSubject(req.getSubject());
+                    board.setBoardDesc(req.getBoardDesc());
+                    return board.getBoardId();
+                })
+                .orElseThrow(() -> new TradRuntimeException(BoardErrorCode.NO_BOARD));
     }
 
     @Transactional
     @Override
-    public String deleteBoard(String boardId) {
-        return null;
+    public void deleteBoard(String boardId) {
+        boardRepository.deleteByBoardId(boardId);
     }
 
 }

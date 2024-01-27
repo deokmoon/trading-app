@@ -3,7 +3,7 @@ package com.trading.apiclient.navernewssearch;
 import com.trading.apiclient.navernewssearch.request.NewsSearchRequest;
 import com.trading.apiclient.navernewssearch.response.NewsSearchResponse;
 
-public abstract class AbstractNewsSearchClient implements NewsSearchClient{
+public abstract class AbstractNewsSearchClient implements NewsSearchClient {
 
     private NewsSearchClient nextClient;
 
@@ -31,4 +31,5 @@ public abstract class AbstractNewsSearchClient implements NewsSearchClient{
     public NewsSearchClient getNextClient() {
         return nextClient;
     }
+
 }

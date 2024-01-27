@@ -1,6 +1,6 @@
 package com.trading.controller.request;
 
-import com.trading.domain.auth.response.GoogleOAuthTokenRes;
+import com.trading.application.auth.response.GoogleOAuthTokenRes;
 import lombok.Getter;
 
 @Getter

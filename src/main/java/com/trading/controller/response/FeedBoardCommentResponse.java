@@ -31,7 +31,7 @@ public class FeedBoardCommentResponse {
                 .id(feedComment.getId().toString())
                 .image(Base64.getEncoder().encodeToString(feedComment.getImage()))
                 .writer(feedComment.getWriter())
-                .createdDate(feedComment.getCreatedDatetime().toString()) // Assuming createdDate is a string
+                .createdDate(feedComment.getCretDatetime().toString()) // Assuming createdDate is a string
                 .comment(feedComment.getComment())
                 .likeCount(feedComment.getLikeCount())
                 .replys(Optional.ofNullable(feedComment.getReplies())

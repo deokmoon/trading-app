@@ -1,9 +1,9 @@
-package com.trading.domain.auth.service.impl;
+package com.trading.application.auth.impl;
 
 import com.google.api.client.json.webtoken.JsonWebSignature;
 import com.google.auth.oauth2.TokenVerifier;
-import com.trading.domain.auth.service.GoogleAuthService;
-import com.trading.domain.auth.response.GoogleUserRes;
+import com.trading.application.auth.GoogleAuthService;
+import com.trading.application.auth.response.GoogleUserRes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

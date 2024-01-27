@@ -1,4 +1,4 @@
-package com.trading.domain.auth.response;
+package com.trading.application.auth.response;
 
 import com.google.api.client.json.webtoken.JsonWebToken;
 import com.trading.common.constants.YesNo;

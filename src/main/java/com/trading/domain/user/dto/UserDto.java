@@ -1,6 +1,5 @@
 package com.trading.domain.user.dto;
 
-import com.trading.common.constants.BaseEnum;
 import com.trading.common.constants.YesNo;
 import com.trading.common.utils.CommonUtils;
 import com.trading.common.utils.MvcUtils;
@@ -86,9 +85,9 @@ public class UserDto {
                 .name(user.getName())
                 .pw(user.getPw())
                 .profile(user.getProfile())
-                .cretDtime(user.getCreatedDatetime())
+                .cretDtime(user.getCretDatetime())
                 .cretId(user.getCretId())
-                .modDtime(user.getUpdateDatetime())
+                .modDtime(user.getModDatetime())
                 .modId(user.getModId())
                 .authKey(user.getAuthKey())
                 .authYn(user.getAuthYn())
