@@ -23,7 +23,7 @@ $ java -jar build/libs/trading-app-0.0.1-SNAPSHOT.jar
   - DTO, Entity 간의 변환을 위해 사용
 
 ## Upbit
-- [업비트 api 문서](https://docs.upbit.com/docs/user-request-guide)
+- [업비트 api 문서](https://docs.upbit.com/docs/userRes-request-guide)
 
 ## 뉴스 검색 api
 - [네이버 뉴스 검색 API 문서](https://developers.naver.com/docs/serviceapi/search/news/news.md)

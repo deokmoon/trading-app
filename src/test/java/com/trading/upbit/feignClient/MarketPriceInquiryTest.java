@@ -1,6 +1,6 @@
 package com.trading.upbit.feignClient;
 
-import com.trading.upbit.ticker.adapter.MarketPriceInquiry;
+import com.trading.apiclient.upbit.MarketPriceInquiry;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,4 +22,5 @@ class MarketPriceInquiryTest {
         System.out.println(upbitReturn);
         assertThat(upbitReturn).isNotNull();
     }
+
 }
