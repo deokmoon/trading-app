@@ -1,7 +1,7 @@
 package com.trading.domain.comment;
 
-import com.trading.board.dto.FeedBoardCommentRequest;
 import com.trading.config.orm.BaseTimeEntity;
+import com.trading.controller.request.FeedBoardCommentRequest;
 import com.trading.domain.board.Board;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -47,7 +47,7 @@ public class FeedComment extends BaseTimeEntity {
     private String writer;
     private int likeCount;
 
-    public static FeedComment from(FeedBoardCommentRequest request, FeedBoard board) throws IOException {
+    public static FeedComment from(FeedBoardCommentRequest request, Board board) throws IOException {
         return FeedComment.builder()
                 .image(request.getImage() == null ? new byte[]{} : request.getImage().getBytes())
                 .board(board)

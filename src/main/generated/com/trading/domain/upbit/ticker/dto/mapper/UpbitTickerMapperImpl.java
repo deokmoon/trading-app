@@ -6,8 +6,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-27T11:32:41+0900",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.9 (Eclipse Adoptium)"
+    date = "2024-02-03T12:15:57+0900",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.8.1 (Homebrew)"
 )
 public class UpbitTickerMapperImpl implements UpbitTickerMapper {
 
