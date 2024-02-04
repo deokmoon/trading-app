@@ -2,6 +2,7 @@ package com.trading.controller.board;
 
 import com.trading.controller.board.request.BoardListReq;
 import com.trading.controller.board.request.CreateBoardReq;
+import com.trading.controller.board.request.LikeBoardReq;
 import com.trading.controller.board.request.UpdateBoardReq;
 import com.trading.controller.board.response.BoardListRes;
 import com.trading.controller.board.response.BoardRes;
@@ -47,9 +48,9 @@ public class BoardController {
         boardService.deleteBoard(boardId);
     }
 
-    @PostMapping("/like/{boardId}")
-    public void likeBoard(@PathVariable String boardId) {
-        boardService.likeBoard(boardId);
+    @PutMapping("/like")
+    public void likeBoard(LikeBoardReq likeBoardReq) {
+        boardService.likeBoard(likeBoardReq.getBoardId());
     }
 
 }
