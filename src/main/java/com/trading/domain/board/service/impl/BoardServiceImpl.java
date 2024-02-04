@@ -1,5 +1,6 @@
 package com.trading.domain.board.service.impl;
 
+import com.trading.common.annotation.lock.CountLock;
 import com.trading.common.errorcode.BoardErrorCode;
 import com.trading.common.exception.TradRuntimeException;
 import com.trading.common.utils.MvcUtils;
@@ -62,6 +63,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void deleteBoard(String boardId) {
         boardRepository.deleteByBoardId(boardId);
+    }
+
+    @Transactional
+    @CountLock
+    public void likeBoard(String boardId) {
+        boardRepository.findByBoardId(boardId)
+                .ifPresent(
+                        Board::increaseLikeCount
+                );
     }
 
 }

@@ -47,4 +47,9 @@ public class BoardController {
         boardService.deleteBoard(boardId);
     }
 
+    @PostMapping("/like/{boardId}")
+    public void likeBoard(@PathVariable String boardId) {
+        boardService.likeBoard(boardId);
+    }
+
 }

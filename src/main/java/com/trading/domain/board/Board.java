@@ -37,4 +37,9 @@ public class Board extends BaseTimeEntity {
     @Description("수정자ID")
     private String modId;
 
+    private long likeCount;
+
+    public void increaseLikeCount() {
+        this.likeCount = this.likeCount + 1;
+    }
 }
