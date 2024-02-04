@@ -18,4 +18,5 @@ public interface BoardService {
 
     void deleteBoard(String boardId);
 
+    void likeBoard(String boardId);
 }
